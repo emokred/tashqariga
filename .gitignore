@@ -3,6 +3,7 @@
 # ==========================================
 /node_modules
 /bot/node_modules
+/bot/data/db.json
 /.pnp
 .pnp.js
 .yarn/cache
