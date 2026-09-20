@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+  <meta charset="utf-8">
+  <title>Tashqariga.uz — Rasmiy Bosh Brendbuk</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: #1E2322;
+      background-color: #ffffff;
+      padding: 40px;
+    }
+    h1 {
+      color: #111315;
+      font-size: 24pt;
+      font-weight: 800;
+      border-bottom: 4px solid #FF5500;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+    h2 {
+      color: #111315;
+      font-size: 15pt;
+      font-weight: 700;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding-bottom: 6px;
+      margin-top: 30px;
+    }
+    h3 {
+      color: #FF5500;
+      font-size: 12pt;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+    .manifesto-box {
+      background-color: #F4F0E8;
+      border-left: 6px solid #FF5500;
+      padding: 18px 24px;
+      margin: 25px 0;
+      font-size: 13pt;
+      font-weight: 600;
+      color: #111315;
+      line-height: 1.5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #CBD5E1;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 10pt;
+    }
+    th {
+      background-color: #111315;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background-color: #F8FAFC;
+    }
+    .color-swatch {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.15);
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .color-card {
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 12px;
+      background: #FAFAFA;
+    }
+    .code-block {
+      background-color: #0F172A;
+      color: #38BDF8;
+      padding: 14px;
+      border-radius: 6px;
+      font-family: 'Consolas', monospace;
+      font-size: 9.5pt;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border-left: 4px solid #FF5500;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌲 TASHQARIGA.UZ — RASMIY BOSH BRENDBUK</h1>
+  <p><strong>Hujjat turi:</strong> Brand Identity, Visual Design System & Tone of Voice Guidelines<br>
+  <strong>Versiya:</strong> 3.0 (Master Release)<br>
+  <strong>Qamrov:</strong> Digital, SMM, Print, Merchandising, Video & OOH</p>
+
+  <div class="manifesto-box">
+    «Tashqariga» shunchaki sayohat servisi emas. Bu to‘rtta devor, cheksiz tirbandlik va ofis monitorlariga qarshi yoshlar harakati.
+  </div>
+
+  <h2>🧭 1. Brend Falsafasi va Arxetipi</h2>
+  <p>Bugungi shahar hayoti — beton devorlar, cheksiz tirbandliklar va 50 soatlik ofis monitorlaridan iborat qafasdir. «Tashqariga» bu qafasning eshigini ochib, odamlarni tog‘lar, toza havo va haqiqiy erkinlik sari olib chiquvchi ko‘prikdir.</p>
+  
+  <p><strong>Brend Arxetipi:</strong></p>
+  <ul>
+    <li><strong>Kashfiyotchi (The Explorer):</strong> Ochiq havoda yangi cho‘qqilar, shaffof daryolar va kanyonlarni kashf etishga chanqoqlik, toza kislorod.</li>
+    <li><strong>Erkin Isyonkor (The Rebel):** Monoton shahar rutinasiga va «dam olishda uyda yotish kerak» degan qoliplarga qarshi yoshlar isyoni.</li>
+  </ul>
+
+  <h2>⚡ 2. Shiorlar Tizimi (Slogans & Taglines)</h2>
+  <table>
+    <tr>
+      <th>Turi</th>
+      <th>Rasmiy Shior</th>
+      <th>Qo‘llanish Maydoni</th>
+    </tr>
+    <tr>
+      <td><strong>Bosh Shior (Tagline)</strong></td>
+      <td><strong>«Shahardan qoching. Tashqariga chiqing.»</strong></td>
+      <td>Logotip ostida, veb-saytda, bilbordlarda</td>
+    </tr>
+    <tr>
+      <td><strong>Hissiy Shior (Emotional Hook)</strong></td>
+      <td><strong>«Haqiqiy hayot — tashqarida.»</strong></td>
+      <td>Atmosferaviy postlar, fotosuratlar, karusellar</td>
+    </tr>
+    <tr>
+      <td><strong>Jonli SMM Chaqirig‘i</strong></td>
+      <td><strong>«SURAMIZMI?»</strong></td>
+      <td>Afishalar, Stories, juma kungi e'lonlar</td>
+    </tr>
+    <tr>
+      <td><strong>Video Imzosi (Signature Outro)</strong></td>
+      <td><strong>«Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!»</strong></td>
+      <td>YouTube, Reels va video kontentlar yakunida</td>
+    </tr>
+  </table>
+
+  <h2>🗣️ 3. Tone of Voice (Muloqot Standartlari)</h2>
+  <p>Biz rasmiy byurokrat yoki sovuq turoperator emasmiz. Biz — <strong>tog‘ yo‘llarini besh qo‘ldek biladigan, yo‘l boshlovchi, samimiy va baquvvat DO‘STMIZ</strong>.</p>
+  
+  <table>
+    <tr>
+      <th style="background-color: #DC2626;">❌ Qat'iyan Man Etiladi</th>
+      <th style="background-color: #16A34A;">✅ Bizning Tilimiz</th>
+    </tr>
+    <tr>
+      <td>«Hurmatli mijozlarimiz...»</td>
+      <td>«Salom, do‘stim! Qalaysan?»</td>
+    </tr>
+    <tr>
+      <td>«Kompaniyamiz o‘z xizmatlarini taklif qiladi...»</td>
+      <td>«Bu hafta qayerga qochamiz? Suramizmi?»</td>
+    </tr>
+    <tr>
+      <td>«Ekskursiya narxlari bilan tanishing...»</td>
+      <td>«Safarga o‘z o‘rningni band qil, transport tayyor.»</td>
+    </tr>
+    <tr>
+      <td>«Yakka tartibda qatnashishingiz mumkin...»</td>
+      <td>«Kompaniyang bo‘lmasa xavotir olma — bitta o‘zing kel, qaytishda 15 ta yangi do‘sting bo‘ladi!»</td>
+    </tr>
+  </table>
+
+  <h2>🎨 4. Rasmiy Ranglar Tizimi (Color Palette)</h2>
+  <p>Quyidagi jadvalda har bir rang o‘zining real vizual namunasi bilan berilgan:</p>
+
+  <table>
+    <tr>
+      <th>Vizual Namunasi</th>
+      <th>Rang Nomi</th>
+      <th>HEX Kodi</th>
+      <th>RGB Kodi</th>
+      <th>Roli va Maqsadi</th>
+    </tr>
+    <tr>
+      <td><span class="color-swatch" style="background-color: #111315;"></span></td>
+      <td><strong>Alpine Slate</strong></td>
+      <td><code>#111315</code></td>
+      <td>17, 19, 21</td>
+      <td>Asosiy Fon, qoya toshi, qorong‘i kontrast zamin</td>
+    </tr>
+    <tr>
+      <td><span class="color-swatch" style="background-color: #EAA023;"></span></td>
+      <td><strong>Mustard Storm</strong></td>
+      <td><code>#EAA023</code></td>
+      <td>234, 160, 35</td>
+      <td>Gorpcore xantal sariq, texnik kurtkalar, asosiy vizual urg‘u</td>
+    </tr>
+    <tr>
+      <td><span class="color-swatch" style="background-color: #FF5500;"></span></td>
+      <td><strong>Neon Magma</strong></td>
+      <td><code>#FF5500</code></td>
+      <td>255, 85, 0</td>
+      <td>Olovrang neon, sarlavha nuri, diqqat markazi</td>
+    </tr>
+    <tr>
+      <td><span class="color-swatch" style="background-color: #1DA89C;"></span></td>
+      <td><strong>Glacier Cyan</strong></td>
+      <td><code>#1DA89C</code></td>
+      <td>29, 168, 156</td>
+      <td>Muzlik ko‘l suvi, tog‘ daryosi, topo-marshrut chizig‘i</td>
+    </tr>
+    <tr>
+      <td><span class="color-swatch" style="background-color: #F4F0E8;"></span></td>
+      <td><strong>Vintage Fog</strong></td>
+      <td><code>#F4F0E8</code></td>
+      <td>244, 240, 232</td>
+      <td>Iliq 35mm analog qog‘oz, pastki info-bloklar</td>
+    </tr>
+    <tr>
+      <td><span class="color-swatch" style="background-color: #FF2E63;"></span></td>
+      <td><strong>Alert Pink</strong></td>
+      <td><code>#FF2E63</code></td>
+      <td>255, 46, 99</td>
+      <td>«Nearly Gone» va «Limited Seats» skotch stikeri</td>
+    </tr>
+  </table>
+
+  <h2>🔤 5. Tipografika Standartlari</h2>
+  <ul>
+    <li><strong>Sarlavhalar (Headlines):</strong> <code>Bebas Neue</code> / <code>Oswald</code> (Dadil baland) yoki <code>Rubik Vinyl</code> (Suyuq retro) yoki <code>Playfair Display</code> (Kino retro).</li>
+    <li><strong>Asosiy Matn (Body):</strong> <code>Plus Jakarta Sans</code> yoki <code>Inter</code> (O‘zbekcha <code>o‘</code>, <code>g‘</code> harflarini mukammal ko‘rsatadi).</li>
+    <li><strong>Telemetriya va GPS:</strong> <code>Space Mono</code> yoki <code>JetBrains Mono</code> (Koordinatalar, vaqt, balandlik uchun).</li>
+  </ul>
+
+  <h2>🖼️ 6. Beshta Mustaqil Grafik Poster Stili</h2>
+  <ol>
+    <li><strong>Stil 1: Gorpcore Technical Editorial</strong> — Yuzda gorizontal shutter motion blur, xantal kurtka, Shveytsar GPS koordinata gridi va pastda falsafiy mikromatn.</li>
+    <li><strong>Stil 2: Youth Community & Kinetic Motion</strong> — Kuchli kinetik blur, oltin soat quyosh nuri, erkin suyuq qabariq sarlavha yoki tungi neon to‘q-sariq nur.</li>
+    <li><strong>Stil 3: Oriental Textile & Swiss Brutalism</strong> — An'anaviy o‘zbek gilami to‘qimasi foni, 8-bit piksel sarlavha, qat'iy oq-qora turlar jadvali va shtrix-kod.</li>
+    <li><strong>Stil 4: Retro Alpine Cinema & Sunburst</strong> — Qorli cho‘qqi orqasida qalin geometrik qizil quyosh nurlari (sunburst) va pastda kinofilm billing-titrlari.</li>
+    <li><strong>Stil 5: Topo-Trail & Doodle Sticker</strong> — Tabiat manzarasi ustidan o‘tgan oq GPS topo-marshrut chizig‘i, burchakda neon pushti skotch stikeri («NEARLY GONE»).</li>
+  </ol>
+
+  <p style="margin-top: 40px; font-style: italic; color: #64748B;">
+    «Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!»
+  </p>
+
+</body>
+</html>
