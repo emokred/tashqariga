@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tashqariga.uz — Rasmiy Brendbuk & Vizual Identitet Vitrinasi</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Unbounded:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pine: {
+              DEFAULT: '#183B2B',
+              50: '#F0F7F3',
+              100: '#DCEEE3',
+              200: '#BCDCCB',
+              800: '#224437',
+              900: '#183B2B',
+              950: '#0C2017'
+            },
+            adventure: {
+              DEFAULT: '#FF5E1E',
+              50: '#FFF5ED',
+              100: '#FFE8D5',
+              400: '#FF873A',
+              500: '#FF5E1E',
+              600: '#F04406',
+              700: '#C73106'
+            },
+            fog: '#F7F9F6',
+            granite: '#1E2322',
+            charvak: '#3A86C8',
+            amber: '#F59E0B',
+            sage: '#92C2AB'
+          },
+          fontFamily: {
+            heading: ['Unbounded', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #F7F9F6;
+      color: #1E2322;
+    }
+    .font-heading {
+      font-family: 'Unbounded', sans-serif;
+    }
+    .toast-active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; }
+    }
+  </style>
+</head>
+<body class="selection:bg-adventure-500 selection:text-white">
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-granite text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-pine-800 transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+    <div class="w-2.5 h-2.5 rounded-full bg-adventure-500 animate-ping"></div>
+    <span id="toast-text" class="text-sm font-semibold tracking-wide">HEX kod nusxalandi!</span>
+  </div>
+
+  <!-- STICKY TOP NAV -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-200/80 transition-all no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- LOGO BRANDMARK -->
+        <a href="#hero" class="flex items-center gap-3.5 group">
+          <div class="w-12 h-12 rounded-2xl bg-pine-900 flex items-center justify-center shadow-lg shadow-pine-900/25 group-hover:scale-105 transition-transform duration-300">
+            <!-- Mountain + Compass SVG -->
+            <svg class="w-7 h-7" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#F7F9F6" opacity="0.95"/>
+              <path d="M48 24 L68 58 L48 82 Z" fill="#92C2AB" opacity="0.4"/>
+              <polygon points="56,52 48,48 78,22 60,60" fill="#FF5E1E"/>
+              <polygon points="56,52 60,60 32,82 48,48" fill="#92C2AB"/>
+              <circle cx="56" cy="52" r="3" fill="#183B2B"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-heading font-black text-xl text-pine-900 tracking-tight">tashqariga<span class="text-adventure-500">.uz</span></span>
+              <span class="text-[10px] uppercase font-bold tracking-wider bg-pine-100 text-pine-900 px-2 py-0.5 rounded-md border border-pine-200">Brandbook 2.0</span>
+            </div>
+            <p class="text-xs text-gray-500 font-medium">Rasmiy Brendbuk & Vizual Identitet</p>
+          </div>
+        </a>
+
+        <!-- NAV LINKS -->
+        <nav class="hidden lg:flex items-center gap-6 text-xs uppercase tracking-wider font-bold text-gray-600">
+          <a href="#falsafa" class="hover:text-adventure-500 transition-colors">Falsafa</a>
+          <a href="#logotip" class="hover:text-adventure-500 transition-colors">Logotip</a>
+          <a href="#ranglar" class="hover:text-adventure-500 transition-colors">Ranglar</a>
+          <a href="#tipografika" class="hover:text-adventure-500 transition-colors">Tipografika</a>
+          <a href="#merch" class="hover:text-adventure-500 transition-colors">Merch & Mockup</a>
+          <a href="#smm" class="hover:text-adventure-500 transition-colors">SMM Tizimi</a>
+          <a href="#ui" class="hover:text-adventure-500 transition-colors">UI Tizimi</a>
+          <a href="#rules" class="hover:text-adventure-500 transition-colors">Qoidalar</a>
+        </nav>
+
+        <!-- ACTION BUTTONS -->
+        <div class="flex items-center gap-3">
+          <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-300 text-xs font-bold text-gray-700 hover:bg-gray-100 transition-all active:scale-95">
+            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Chop etish / PDF
+          </button>
+          <a href="https://tashqariga.uz" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-adventure-500 hover:bg-adventure-600 text-white text-xs font-bold shadow-lg shadow-adventure-500/25 transition-all active:scale-95">
+            Jonli Tizim
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative overflow-hidden bg-pine-950 text-white pt-24 pb-28 border-b border-pine-900">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#FF5E1E_1px,transparent_1px)] [background-size:24px_24px]"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pine-900/80 border border-pine-800 text-adventure-400 text-xs font-bold tracking-wider uppercase mb-6">
+            <span class="w-2 h-2 rounded-full bg-adventure-500"></span>
+            Toshkent — Chotqol — Tyan-Shan
+          </div>
+          
+          <h1 class="font-heading font-black text-4xl sm:text-6xl text-white tracking-tight leading-[1.15] mb-6">
+            Shahardan qoching. <br>
+            <span class="text-adventure-500">Tashqariga</span> chiqing.
+          </h1>
+          
+          <p class="text-base sm:text-lg text-gray-300 font-normal leading-relaxed max-w-2xl mb-8">
+            «Tashqariga» — bu shunchaki turistik servis emas. Bu — beton devorlar, tirbandlik va ofis ekranlariga qarshi <strong class="text-white">madaniy harakat</strong>. O'zbekistonning tog'lari, toza havosi va erkinlik hissini har bir inson uchun eng qulay raqamli ekotizimga birlashtiramiz.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-400">
+            <div class="flex items-center gap-2 bg-pine-900/60 px-4 py-2 rounded-lg border border-pine-800">
+              <span class="text-adventure-400">Arxetip:</span> Kashfiyotchi + Isyonkor
+            </div>
+            <div class="flex items-center gap-2 bg-pine-900/60 px-4 py-2 rounded-lg border border-pine-800">
+              <span class="text-adventure-400">Uslub:</span> Nordik Minimalizm & Raw Nature
+            </div>
+            <div class="flex items-center gap-2 bg-pine-900/60 px-4 py-2 rounded-lg border border-pine-800">
+              <span class="text-adventure-400">Qamrov:</span> Digital, Print, OOH, Merch
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO VECTOR EMBLEM CARD -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-full max-w-md bg-gradient-to-b from-pine-900 to-pine-950 p-8 sm:p-10 rounded-3xl border border-pine-800/80 shadow-2xl relative group">
+            <div class="absolute -top-3 -right-3 bg-adventure-500 text-white text-[10px] font-heading font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-md">
+              Master Mark
+            </div>
+
+            <!-- Master Vector Badge -->
+            <div class="aspect-square w-full rounded-2xl bg-pine-900 flex flex-col items-center justify-center p-8 border border-pine-800 shadow-inner relative overflow-hidden">
+              <svg class="w-48 h-48 drop-shadow-xl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Mountain Background -->
+                <path d="M18 96 L54 28 L78 68 L92 44 L106 96 Z" fill="#F7F9F6" opacity="0.95"/>
+                <path d="M54 28 L78 68 L54 96 Z" fill="#92C2AB" opacity="0.35"/>
+                <path d="M78 68 L92 44 L92 96 Z" fill="#BCDCCB" opacity="0.25"/>
+                <!-- Compass Needle 45 deg North-East -->
+                <polygon points="62,60 54,55 94,24 70,68" fill="#FF5E1E"/>
+                <polygon points="62,60 70,68 36,96 54,55" fill="#92C2AB"/>
+                <circle cx="62" cy="60" r="4" fill="#183B2B"/>
+                <circle cx="62" cy="60" r="1.5" fill="#F7F9F6"/>
+              </svg>
+              
+              <div class="mt-4 text-center">
+                <span class="font-heading font-black text-2xl text-white tracking-wider">tashqariga<span class="text-adventure-500">.uz</span></span>
+                <p class="text-[11px] text-gray-400 tracking-widest uppercase mt-1">Mountain & Compass System</p>
+              </div>
+            </div>
+
+            <div class="mt-6 flex justify-between items-center text-xs text-gray-400 font-mono">
+              <span>Geo: 41.31108° N, 69.24056° E</span>
+              <span class="text-adventure-400">Ver 2.0 / 2026</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. BREND FALSAFASI VA HARAKAT -->
+  <section id="falsafa" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">01 / Brend Strategiyasi</h2>
+      <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+        Rutina Qafasidan Erkinlik Cho‘qqisiga
+      </h3>
+      <p class="text-gray-600 mt-4 text-base leading-relaxed">
+        Bugungi shahar hayoti — cheksiz tirbandliklar, 4 ta devor orasidagi monitorlar va sun'iy yorug'likdan iborat qafasdir. «Tashqariga» bu qafasning kalitini har bir insonga beradi.
+      </p>
+    </div>
+
+    <!-- REFREYMING KONTRAST BLOKI -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <!-- BETON VA OFIS -->
+      <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm relative overflow-hidden">
+        <div class="w-12 h-12 rounded-2xl bg-gray-100 text-gray-500 flex items-center justify-center font-heading font-bold text-xl mb-6">
+          🏢
+        </div>
+        <h4 class="font-heading font-bold text-xl text-gray-800 mb-4">Shahar Rutinasi & Qafas</h4>
+        <ul class="space-y-3.5 text-sm text-gray-600">
+          <li class="flex items-start gap-3">
+            <span class="text-red-500 font-bold">✕</span>
+            <span>Hafta davomida 50+ soat monitor qarshisida o‘tirish (burnout)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-500 font-bold">✕</span>
+            <span>Dam olish kunida yana o‘sha Tashkent City yoki choyxona (zerikish)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-500 font-bold">✕</span>
+            <span>Do‘stlar guruhida va'dalar beriladi, lekin hech kim bormaydi</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-500 font-bold">✕</span>
+            <span>Gidlar noaniq, narxlar shaffof emas, transport muammo</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- TASHQARIGA BILAN TOG' -->
+      <div class="bg-pine-900 text-white p-8 rounded-3xl border border-pine-800 shadow-xl relative overflow-hidden">
+        <div class="w-12 h-12 rounded-2xl bg-adventure-500 text-white flex items-center justify-center font-heading font-bold text-xl mb-6">
+          🌲
+        </div>
+        <h4 class="font-heading font-bold text-xl text-white mb-4">«Tashqariga» Ekotizimi</h4>
+        <ul class="space-y-3.5 text-sm text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="text-adventure-400 font-bold">✓</span>
+            <span>Bir bosishda Telegram orqali saralangan xavfsiz turlarga yozilish</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-adventure-400 font-bold">✓</span>
+            <span>O‘pkani 100% toza kislorod bilan to‘ldirish va ruhiy qayta yuklanish</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-adventure-400 font-bold">✓</span>
+            <span>Solo kelgan sayyoh safar oxirida 15 ta yangi qadrdon do‘st orttiradi</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-adventure-400 font-bold">✓</span>
+            <span>Kafolatlangan qulay transport, sertifikatlangan gidlar va xavfsizlik</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SHIORLAR KARTALARI -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white p-6 rounded-2xl border border-gray-200">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-adventure-500 block mb-1">Bosh Shior (Primary)</span>
+        <h5 class="font-heading font-bold text-base text-pine-900">«Shahardan qoching. Tashqariga chiqing.»</h5>
+        <p class="text-xs text-gray-500 mt-2">Bilbordlar, bosh sahifa va asosiy videoroliklar uchun.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-gray-200">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-adventure-500 block mb-1">Hissiy Shior (Emotional)</span>
+        <h5 class="font-heading font-bold text-base text-pine-900">«Haqiqiy hayot — tashqarida.»</h5>
+        <p class="text-xs text-gray-500 mt-2">Instagram Reels, TikTok va hissiy postlar uchun.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-gray-200">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-adventure-500 block mb-1">Harakatga Undov (Action)</span>
+        <h5 class="font-heading font-bold text-base text-pine-900">«Divandan turing. Tabiat chorlayapti.»</h5>
+        <p class="text-xs text-gray-500 mt-2">Push-xabarnomalar va Telegram bot e'lonlari uchun.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-gray-200">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-adventure-500 block mb-1">Hamjamiyat (Community)</span>
+        <h5 class="font-heading font-bold text-base text-pine-900">«Yolg‘iz emassan, davramizga qo‘shil.»</h5>
+        <p class="text-xs text-gray-500 mt-2">Hamrohsiz sayohat qiluvchi (solo) yoshlar uchun.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. LOGOTIP ANATOMIYASI VA XAVFSIZ MAYDON -->
+  <section id="logotip" class="py-24 bg-white border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">02 / Vizual Simvolika</h2>
+        <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+          Logotip Anatomiyasi: Tog‘ Cho‘qqisi + Kompas Strelkasi
+        </h3>
+        <p class="text-gray-600 mt-4 text-base leading-relaxed">
+          Logotipimiz O‘zbekistonning viqorli Tyan-Shan qoyalari va yo‘nalish ko‘rsatuvchi 45 gradus dinamik kompas sintezidan tashkil topgan. Minimalistik geometriya har qanday masshtabda mukammal taniladi.
+        </p>
+      </div>
+
+      <!-- LOGO VARIATSIYALARI & CLEAR SPACE GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        
+        <!-- VARIANT 1: PRIMARY DARK -->
+        <div class="bg-pine-900 p-8 rounded-3xl text-white flex flex-col items-center justify-center text-center relative border border-pine-800">
+          <span class="absolute top-4 left-4 text-[10px] uppercase font-bold tracking-widest text-adventure-400 bg-pine-950 px-2.5 py-1 rounded-md">
+            Asosiy (Dark Mode)
+          </span>
+          <div class="my-10">
+            <svg class="w-32 h-32 mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#F7F9F6" opacity="0.95"/>
+              <path d="M48 24 L68 58 L48 82 Z" fill="#92C2AB" opacity="0.4"/>
+              <polygon points="56,52 48,48 78,22 60,60" fill="#FF5E1E"/>
+              <polygon points="56,52 60,60 32,82 48,48" fill="#92C2AB"/>
+              <circle cx="56" cy="52" r="3" fill="#183B2B"/>
+            </svg>
+            <div class="mt-4 font-heading font-black text-2xl tracking-wide">
+              tashqariga<span class="text-adventure-500">.uz</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400">To‘q fonlar, turlar bannerlari va veb-header uchun</p>
+        </div>
+
+        <!-- VARIANT 2: PRIMARY LIGHT -->
+        <div class="bg-fog p-8 rounded-3xl text-granite flex flex-col items-center justify-center text-center relative border border-gray-200">
+          <span class="absolute top-4 left-4 text-[10px] uppercase font-bold tracking-widest text-pine-900 bg-white px-2.5 py-1 rounded-md border border-gray-200">
+            Ochiq Fon (Light Mode)
+          </span>
+          <div class="my-10">
+            <svg class="w-32 h-32 mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#183B2B"/>
+              <path d="M48 24 L68 58 L48 82 Z" fill="#224437" opacity="0.4"/>
+              <polygon points="56,52 48,48 78,22 60,60" fill="#FF5E1E"/>
+              <polygon points="56,52 60,60 32,82 48,48" fill="#183B2B"/>
+              <circle cx="56" cy="52" r="3" fill="#F7F9F6"/>
+            </svg>
+            <div class="mt-4 font-heading font-black text-2xl text-pine-900 tracking-wide">
+              tashqariga<span class="text-adventure-500">.uz</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-500">Hujjatlar, hisob-fakturalar va ochiq UI sahifalari uchun</p>
+        </div>
+
+        <!-- VARIANT 3: MONOCHROME / EMBOSS -->
+        <div class="bg-granite p-8 rounded-3xl text-white flex flex-col items-center justify-center text-center relative border border-gray-800">
+          <span class="absolute top-4 left-4 text-[10px] uppercase font-bold tracking-widest text-gray-300 bg-gray-900 px-2.5 py-1 rounded-md">
+            Monoxrom / Shtamp
+          </span>
+          <div class="my-10">
+            <svg class="w-32 h-32 mx-auto opacity-90" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#FFFFFF"/>
+              <polygon points="56,52 48,48 78,22 60,60" fill="#94A3B8"/>
+              <polygon points="56,52 60,60 32,82 48,48" fill="#64748B"/>
+              <circle cx="56" cy="52" r="3" fill="#000000"/>
+            </svg>
+            <div class="mt-4 font-heading font-black text-2xl text-white tracking-wide">
+              tashqariga<span class="text-gray-400">.uz</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400">Merch, metall idishlar va kiyim teglari uchun</p>
+        </div>
+
+      </div>
+
+      <!-- CLEAR SPACE (X-ZONE) QOIDALARI -->
+      <div class="bg-fog p-8 sm:p-10 rounded-3xl border border-gray-200">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <h4 class="font-heading font-bold text-2xl text-pine-900 mb-3">Xavfsiz Maydon (Clear Space — 1X)</h4>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+              Logotipning vizual ravshanligi va kuchini saqlash uchun uning atrofida hech qanday matn yoki begona elementlar bo‘lmasligi kerak.
+              Xavfsiz oraliq birligi sifatida kompas strelkasining balandligi (<strong class="text-adventure-500 font-mono">X</strong>) olinadi. Har tomondan kamida 1X masofa bo‘sh qoldiriladi.
+            </p>
+            <div class="grid grid-cols-2 gap-4 text-xs font-semibold text-gray-700">
+              <div class="p-3 bg-white rounded-xl border border-gray-200">
+                <span class="text-adventure-500 block">Digital ekranlarda:</span> Minimal kenglik — <strong>28 px</strong>
+              </div>
+              <div class="p-3 bg-white rounded-xl border border-gray-200">
+                <span class="text-adventure-500 block">Chop etishda (Print):</span> Minimal kenglik — <strong>15 mm</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="p-6 bg-white rounded-2xl border-2 border-dashed border-adventure-400 relative">
+              <span class="absolute -top-3 left-4 bg-adventure-500 text-white text-[9px] font-mono px-2 py-0.5 rounded">1X Margin</span>
+              <span class="absolute -bottom-3 right-4 bg-adventure-500 text-white text-[9px] font-mono px-2 py-0.5 rounded">1X Margin</span>
+              <div class="flex items-center gap-3 px-6 py-4 bg-pine-900 rounded-xl text-white">
+                <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none">
+                  <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#F7F9F6"/>
+                  <polygon points="56,52 48,48 78,22 60,60" fill="#FF5E1E"/>
+                </svg>
+                <span class="font-heading font-black text-lg">tashqariga<span class="text-adventure-500">.uz</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. 60-30-10 RANGLAR TIZIMI -->
+  <section id="ranglar" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">03 / Ranglar Psixologiyasi</h2>
+      <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+        Tabiiy Ranglar & 60-30-10 Oltin Qoidasi
+      </h3>
+      <p class="text-gray-600 mt-4 text-base leading-relaxed">
+        Palitramiz O‘zbekiston tog‘ landshaftidan ilhomlangan: zangori archazorlar, ertalabki tuman, tosh qoyalar va quyosh botishining olovrang shafaqi. Rang kodini nusxalash uchun kartochka ustiga bosing.
+      </p>
+    </div>
+
+    <!-- ASOSIY 4 TA RANG KARTALARI -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      
+      <!-- 1. DEEP PINE -->
+      <div onclick="copyColor('#183B2B', 'Archazor Yashili')" class="cursor-pointer group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300">
+        <div class="h-44 bg-[#183B2B] p-5 flex flex-col justify-between text-white relative">
+          <span class="text-[10px] font-mono tracking-widest uppercase bg-black/30 px-2 py-0.5 rounded w-max">60% Asosiy</span>
+          <div class="flex justify-between items-end">
+            <span class="font-mono text-sm font-bold">#183B2B</span>
+            <span class="text-[11px] opacity-75 group-hover:opacity-100 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              Copy
+            </span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h4 class="font-heading font-bold text-base text-pine-900">Deep Pine Green</h4>
+          <p class="text-xs text-gray-500 mt-1 font-medium">Archazor Yashili (Xotirjamlik va salobat)</p>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-[11px] text-gray-400 font-mono space-y-1">
+            <div>RGB: 24, 59, 43</div>
+            <div>CMYK: 83, 44, 75, 52</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. MORNING FOG -->
+      <div onclick="copyColor('#F7F9F6', 'Tog\' Tumani Oqi')" class="cursor-pointer group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300">
+        <div class="h-44 bg-[#F7F9F6] p-5 flex flex-col justify-between text-granite border-b border-gray-200 relative">
+          <span class="text-[10px] font-mono tracking-widest uppercase bg-gray-200/80 px-2 py-0.5 rounded w-max">30% Fon</span>
+          <div class="flex justify-between items-end">
+            <span class="font-mono text-sm font-bold">#F7F9F6</span>
+            <span class="text-[11px] opacity-75 group-hover:opacity-100 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              Copy
+            </span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h4 class="font-heading font-bold text-base text-pine-900">Morning Fog White</h4>
+          <p class="text-xs text-gray-500 mt-1 font-medium">Tog‘ Tumani (Yumshoq, toza havo fon)</p>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-[11px] text-gray-400 font-mono space-y-1">
+            <div>RGB: 247, 249, 246</div>
+            <div>CMYK: 2, 1, 2, 0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. ADVENTURE ORANGE -->
+      <div onclick="copyColor('#FF5E1E', 'Sarguzasht Olovrangi')" class="cursor-pointer group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300">
+        <div class="h-44 bg-[#FF5E1E] p-5 flex flex-col justify-between text-white relative">
+          <span class="text-[10px] font-mono tracking-widest uppercase bg-black/30 px-2 py-0.5 rounded w-max">10% Urg‘u (CTA)</span>
+          <div class="flex justify-between items-end">
+            <span class="font-mono text-sm font-bold">#FF5E1E</span>
+            <span class="text-[11px] opacity-75 group-hover:opacity-100 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              Copy
+            </span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h4 class="font-heading font-bold text-base text-pine-900">Adventure Orange</h4>
+          <p class="text-xs text-gray-500 mt-1 font-medium">Trekking Shafaqi (Harakat, energiya)</p>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-[11px] text-gray-400 font-mono space-y-1">
+            <div>RGB: 255, 94, 30</div>
+            <div>CMYK: 0, 78, 92, 0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. GRANITE STONE -->
+      <div onclick="copyColor('#1E2322', 'Qoya Granti')" class="cursor-pointer group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300">
+        <div class="h-44 bg-[#1E2322] p-5 flex flex-col justify-between text-white relative">
+          <span class="text-[10px] font-mono tracking-widest uppercase bg-white/20 px-2 py-0.5 rounded w-max">Matn & Kontrast</span>
+          <div class="flex justify-between items-end">
+            <span class="font-mono text-sm font-bold">#1E2322</span>
+            <span class="text-[11px] opacity-75 group-hover:opacity-100 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              Copy
+            </span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h4 class="font-heading font-bold text-base text-pine-900">Granite Stone</h4>
+          <p class="text-xs text-gray-500 mt-1 font-medium">Qoya Toshi (Qat'iyat, o‘qiluvchanlik)</p>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-[11px] text-gray-400 font-mono space-y-1">
+            <div>RGB: 30, 35, 34</div>
+            <div>CMYK: 68, 55, 57, 65</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- YORDAMCHI PALITRA -->
+    <div class="bg-white p-8 rounded-3xl border border-gray-200">
+      <h4 class="font-heading font-bold text-lg text-pine-900 mb-6">Yordamchi Funksional Tizim (Functional Colors)</h4>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        
+        <div onclick="copyColor('#3A86C8', 'Charvak Cyan')" class="p-4 rounded-2xl bg-gray-50 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-all flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-[#3A86C8] shadow-sm flex-shrink-0"></div>
+          <div>
+            <div class="font-bold text-xs text-gray-900">Charvak Cyan</div>
+            <div class="text-[10px] text-gray-500 font-mono">#3A86C8 • Suv marshrutlari</div>
+          </div>
+        </div>
+
+        <div onclick="copyColor('#F59E0B', 'Alpine Amber')" class="p-4 rounded-2xl bg-gray-50 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-all flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-[#F59E0B] shadow-sm flex-shrink-0"></div>
+          <div>
+            <div class="font-bold text-xs text-gray-900">Alpine Amber</div>
+            <div class="text-[10px] text-gray-500 font-mono">#F59E0B • Reyting va olov</div>
+          </div>
+        </div>
+
+        <div onclick="copyColor('#92C2AB', 'Trail Sage')" class="p-4 rounded-2xl bg-gray-50 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-all flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-[#92C2AB] shadow-sm flex-shrink-0"></div>
+          <div>
+            <div class="font-bold text-xs text-gray-900">Trail Sage</div>
+            <div class="text-[10px] text-gray-500 font-mono">#92C2AB • Muvaffaqiyat teglari</div>
+          </div>
+        </div>
+
+        <div onclick="copyColor('#E2E8F0', 'Snow Border')" class="p-4 rounded-2xl bg-gray-50 border border-gray-200 cursor-pointer hover:bg-gray-100 transition-all flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-[#E2E8F0] shadow-sm flex-shrink-0"></div>
+          <div>
+            <div class="font-bold text-xs text-gray-900">Snow Border</div>
+            <div class="text-[10px] text-gray-500 font-mono">#E2E8F0 • Ajratuvchi chiziqlar</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 4. TIPOGRAFIKA -->
+  <section id="tipografika" class="py-24 bg-white border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">04 / Matn Standartlari</h2>
+        <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+          Tipografika: Unbounded & Plus Jakarta Sans
+        </h3>
+        <p class="text-gray-600 mt-4 text-base leading-relaxed">
+          Sarlavhalar uchun sarguzashtga to‘la, dadil va zamonaviy <strong>Unbounded</strong> shrifti; asosiy matn, narxlar va mobil interfeys uchun esa o‘ta tiniq <strong>Plus Jakarta Sans</strong> tanlangan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        
+        <!-- HEADINGS DISPLAY -->
+        <div class="p-8 rounded-3xl bg-fog border border-gray-200 space-y-6">
+          <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+            <span class="font-heading font-black text-xl text-pine-900">Unbounded</span>
+            <span class="text-xs font-mono text-gray-500">Sarlavhalar (H1–H3)</span>
+          </div>
+
+          <div>
+            <span class="text-[11px] font-mono text-gray-400 block mb-1">H1 Display / 900 Black</span>
+            <h1 class="font-heading font-black text-3xl text-pine-900 tracking-tight">
+              Tog‘lar seni kutyapti.
+            </h1>
+          </div>
+
+          <div>
+            <span class="text-[11px] font-mono text-gray-400 block mb-1">H2 Heading / 700 Bold</span>
+            <h2 class="font-heading font-bold text-2xl text-pine-900">
+              Gulkam kanyonlari ekspeditsiyasi
+            </h2>
+          </div>
+
+          <div>
+            <span class="text-[11px] font-mono text-gray-400 block mb-1">H3 Card Title / 600 SemiBold</span>
+            <h3 class="font-heading font-semibold text-lg text-adventure-500">
+              Bir kishi uchun 300,000 so‘m
+            </h3>
+          </div>
+        </div>
+
+        <!-- BODY & UI DISPLAY -->
+        <div class="p-8 rounded-3xl bg-fog border border-gray-200 space-y-6">
+          <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+            <span class="font-bold text-xl text-pine-900">Plus Jakarta Sans</span>
+            <span class="text-xs font-mono text-gray-500">Asosiy Matn & Telegram UI</span>
+          </div>
+
+          <div>
+            <span class="text-[11px] font-mono text-gray-400 block mb-1">Body Regular / 400</span>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              O‘zbekiston tog‘larida har dam olish kunida yangi yo‘nalishlarni kashf eting. Biz har bir safarda xavfsizlik, shinam transport va tajribali gidlarni kafolatlaymiz.
+            </p>
+          </div>
+
+          <div>
+            <span class="text-[11px] font-mono text-gray-400 block mb-1">UI Controls & Badges / 700 Bold</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-pine-900 text-white rounded-lg text-xs font-bold">1-kunlik sayohat</span>
+              <span class="px-3 py-1 bg-adventure-500 text-white rounded-lg text-xs font-bold">O‘rta qiyinlik</span>
+              <span class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded-lg text-xs font-bold">14 ta joy qoldi</span>
+            </div>
+          </div>
+
+          <!-- O'ZBEK TILI TIPOGRAFIK QOIDASI -->
+          <div class="p-4 bg-white rounded-2xl border border-gray-200 text-xs text-gray-600 leading-relaxed">
+            <strong class="text-adventure-500 block mb-1">📌 Oltin Qoida (O‘zbek Tili Standarti):</strong>
+            Matnlarda har doim to‘g‘ri teskari vergul ishlatilsin: <code>O‘</code>, <code>o‘</code>, <code>G‘</code>, <code>g‘</code> (oddiy apostrof yoki urg‘u belgisi ` ishlatilmasin).
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. MERCH VA MOCKUPLAR -->
+  <section id="merch" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">05 / Tovar & Merchandising</h2>
+      <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+        Brend Amaliyotda: Merch & Ekspeditsiya Anjomlari
+      </h3>
+      <p class="text-gray-600 mt-4 text-base leading-relaxed">
+        «Tashqariga» auditoriyasi — bu tabiatni sevadigan hamjamiyat. Ular kiyadigan hudi, olib yuradigan emal krujkasi va noutbuk stikeri brendimizning jonli elchisi hisoblanadi.
+      </p>
+    </div>
+
+    <!-- MERCH MOCKUP KARTALARI -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- 1. DEEP PINE HOODIE -->
+      <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all">
+        <div class="aspect-square bg-pine-900 rounded-2xl p-6 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+          <!-- Hoodie Vector Representation -->
+          <div class="w-40 h-40 rounded-3xl bg-pine-800 border-2 border-pine-700 shadow-2xl flex items-center justify-center relative">
+            <div class="w-16 h-10 border-b-2 border-pine-600 rounded-b-full absolute top-2"></div>
+            <!-- Embroidered Chest Logo -->
+            <div class="absolute top-10 right-8 flex items-center gap-1">
+              <div class="w-5 h-5 rounded bg-adventure-500 flex items-center justify-center shadow">
+                <svg class="w-3 h-3 text-white" viewBox="0 0 100 100" fill="currentColor">
+                  <polygon points="56,52 48,48 78,22 60,60"/>
+                </svg>
+              </div>
+            </div>
+            <span class="font-mono text-xs text-pine-400">100% Cotton 420g</span>
+          </div>
+          <span class="absolute bottom-4 text-[10px] font-mono text-adventure-400 bg-pine-950/80 px-2.5 py-1 rounded">Archazor Hudisi</span>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-heading font-bold text-base text-pine-900">Outdoor Heavyweight Hoodie</h4>
+          <p class="text-xs text-gray-500 mt-1">Deep Pine rangli, ko‘krak qismida Adventure Orange kashtali logotip.</p>
+        </div>
+      </div>
+
+      <!-- 2. CAMPING ENAMEL MUG -->
+      <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all">
+        <div class="aspect-square bg-granite rounded-2xl p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+          <!-- Enamel Mug Vector -->
+          <div class="w-32 h-36 bg-gray-900 border-4 border-gray-700 rounded-b-2xl rounded-t-sm shadow-2xl flex flex-col items-center justify-center relative">
+            <!-- Mug handle -->
+            <div class="w-12 h-20 border-4 border-gray-700 rounded-r-2xl absolute -right-11 top-6"></div>
+            <!-- Mug Print -->
+            <svg class="w-14 h-14" viewBox="0 0 100 100" fill="none">
+              <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#FFFFFF"/>
+              <polygon points="56,52 48,48 78,22 60,60" fill="#FF5E1E"/>
+            </svg>
+            <span class="font-heading font-bold text-[10px] text-white tracking-widest mt-1">TASHQARIGA</span>
+          </div>
+          <span class="absolute bottom-4 text-[10px] font-mono text-gray-300 bg-black/60 px-2.5 py-1 rounded">Emal Sayohat Krujkasi</span>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-heading font-bold text-base text-pine-900">Matte Granite Enamel Mug</h4>
+          <p class="text-xs text-gray-500 mt-1">Gulxan atrofida choy ichish uchun 350ml po‘lat emal krujka.</p>
+        </div>
+      </div>
+
+      <!-- 3. WATERPROOF EXPEDITION STICKERS -->
+      <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm hover:shadow-xl transition-all">
+        <div class="aspect-square bg-fog rounded-2xl p-6 flex flex-col items-center justify-center text-center relative border border-gray-200">
+          <div class="relative w-full h-full flex items-center justify-center">
+            <!-- Round Sticker -->
+            <div class="w-24 h-24 rounded-full bg-adventure-500 text-white flex flex-col items-center justify-center shadow-lg transform -rotate-12 border-2 border-white absolute -left-2">
+              <span class="text-[9px] font-heading font-black">DIVANDAN</span>
+              <span class="text-xs font-heading font-black">TURING!</span>
+            </div>
+            <!-- Die-cut mountain sticker -->
+            <div class="w-28 h-28 rounded-2xl bg-pine-900 text-white flex flex-col items-center justify-center shadow-xl transform rotate-6 border-2 border-white absolute right-2">
+              <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none">
+                <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#F7F9F6"/>
+                <polygon points="56,52 48,48 78,22 60,60" fill="#FF5E1E"/>
+              </svg>
+              <span class="font-heading font-bold text-[8px] tracking-widest mt-1">TASHQARIGA</span>
+            </div>
+          </div>
+          <span class="absolute bottom-4 text-[10px] font-mono text-gray-600 bg-white px-2.5 py-1 rounded border border-gray-200">Vinil Stikerlar</span>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-heading font-bold text-base text-pine-900">Outdoor Vinyl Stickers</h4>
+          <p class="text-xs text-gray-500 mt-1">Avtomobil oynalari, termos va noutbuklar uchun suvga chidamli stikerlar.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. SMM VA KONTENT TIZIMI -->
+  <section id="smm" class="py-24 bg-white border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">06 / Raqamli Kommunikatsiya</h2>
+        <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+          SMM Tizimi: Instagram 9-Grid & Reels Standartlari
+        </h3>
+        <p class="text-gray-600 mt-4 text-base leading-relaxed">
+          Bizning lentamiz tartibsiz emas — har bir post vizual «Shaxmat» uslubida almashadi: Manzara &rarr; Matnli Sitata &rarr; Odamlar &rarr; Marshrut &rarr; Reels.
+        </p>
+      </div>
+
+      <!-- INSTAGRAM 9-GRID MOCKUP -->
+      <div class="max-w-4xl mx-auto bg-fog p-6 sm:p-8 rounded-3xl border border-gray-200">
+        <div class="flex items-center justify-between pb-6 mb-6 border-b border-gray-200">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-pine-900 flex items-center justify-center text-white font-heading font-bold text-sm border-2 border-adventure-500">
+              T
+            </div>
+            <div>
+              <span class="font-bold text-sm text-gray-900">@tashqariga.uz</span>
+              <span class="text-xs text-gray-500 block">Toshkent, O‘zbekiston • 50k Hamjamiyat</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold bg-adventure-50 text-adventure-700 px-3 py-1 rounded-full border border-adventure-200">
+            Shaxmat Ritmi (Checkerboard)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 text-center">
+          
+          <!-- 1: Manzara -->
+          <div class="aspect-square bg-pine-900 rounded-xl p-3 flex flex-col items-center justify-center text-white relative">
+            <span class="text-[10px] text-gray-300">🏔️ Kanyon Panoramasi</span>
+            <span class="text-[8px] text-adventure-400 absolute bottom-2">Foto / Estetika</span>
+          </div>
+
+          <!-- 2: Sitata -->
+          <div class="aspect-square bg-white rounded-xl p-3 flex flex-col items-center justify-center text-pine-900 border border-gray-200 relative">
+            <span class="font-heading font-bold text-xs">«Haqiqiy hayot — tashqarida.»</span>
+            <span class="text-[8px] text-gray-400 absolute bottom-2">Tipografik Sitata</span>
+          </div>
+
+          <!-- 3: Insonlar -->
+          <div class="aspect-square bg-pine-800 rounded-xl p-3 flex flex-col items-center justify-center text-white relative">
+            <span class="text-[10px] text-gray-300">🔥 Gulxan atrofidagi do‘stlar</span>
+            <span class="text-[8px] text-adventure-400 absolute bottom-2">Solo sayohatchilar</span>
+          </div>
+
+          <!-- 4: Marshrut -->
+          <div class="aspect-square bg-white rounded-xl p-3 flex flex-col items-center justify-center text-pine-900 border border-gray-200 relative">
+            <span class="font-heading font-bold text-xs text-adventure-500">Urung‘och Ko‘li</span>
+            <span class="text-[9px] text-gray-500 mt-1">To‘liq Cheklist</span>
+            <span class="text-[8px] text-gray-400 absolute bottom-2">Karusel Post</span>
+          </div>
+
+          <!-- 5: Viral Reels -->
+          <div class="aspect-square bg-gradient-to-tr from-adventure-600 to-adventure-400 rounded-xl p-3 flex flex-col items-center justify-center text-white relative shadow-md">
+            <svg class="w-6 h-6 text-white mb-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span class="font-bold text-[10px]">«Dam olishda nima qilamiz?»</span>
+            <span class="text-[8px] text-white/80 absolute bottom-2">Reels • 250k view</span>
+          </div>
+
+          <!-- 6: Gid Portreti -->
+          <div class="aspect-square bg-pine-900 rounded-xl p-3 flex flex-col items-center justify-center text-white relative">
+            <span class="text-[10px] text-gray-300">🧭 Asoschi Gid: Rustam</span>
+            <span class="text-[8px] text-adventure-400 absolute bottom-2">Founding Guide VIP</span>
+          </div>
+
+          <!-- 7: Emotsiya -->
+          <div class="aspect-square bg-white rounded-xl p-3 flex flex-col items-center justify-center text-pine-900 border border-gray-200 relative">
+            <span class="font-heading font-bold text-xs">«Divandan tur!»</span>
+            <span class="text-[8px] text-gray-400 absolute bottom-2">Juma Hype</span>
+          </div>
+
+          <!-- 8: Detal -->
+          <div class="aspect-square bg-pine-950 rounded-xl p-3 flex flex-col items-center justify-center text-white relative">
+            <span class="text-[10px] text-gray-300">☕ Issiq qahva & Qoya</span>
+            <span class="text-[8px] text-adventure-400 absolute bottom-2">Atmosfera</span>
+          </div>
+
+          <!-- 9: Tur E'loni -->
+          <div class="aspect-square bg-pine-100 rounded-xl p-3 flex flex-col items-center justify-center text-pine-900 border border-pine-300 relative">
+            <span class="font-heading font-black text-xs text-adventure-600">SHANBA: GULKAM</span>
+            <span class="text-[9px] text-pine-800">4 ta o‘rin qoldi</span>
+            <span class="text-[8px] text-pine-600 absolute bottom-2">Booking CTA</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. UI TIZIMI VA TELEGRAM MINI-APP NAMUNASI -->
+  <section id="ui" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">07 / Raqamli Mahsulot</h2>
+      <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+        UI/UX Komponentlar & Telegram Mini-App Standarti
+      </h3>
+      <p class="text-gray-600 mt-4 text-base leading-relaxed">
+        Ilova va veb-saytdagi har bir tugma, kartochka va rang foydalanuvchiga tog‘ning erkinligini his qildirishi, hech qanday ortiqcha boshog‘riqsiz 3 soniyada buyurtma berish imkonini taqdim etishi shart.
+      </p>
+    </div>
+
+    <!-- UI KOMPONENTLAR NAMOYISHI -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- REAL TOUR CARD COMPONENT -->
+      <div class="lg:col-span-6 bg-white rounded-3xl p-6 border border-gray-200 shadow-xl">
+        <div class="relative rounded-2xl overflow-hidden bg-pine-950 aspect-[16/10] flex items-center justify-center">
+          <!-- Background Peak -->
+          <svg class="w-full h-full opacity-60" viewBox="0 0 400 250" fill="none" preserveAspectRatio="none">
+            <path d="M0 250 L120 80 L220 180 L310 90 L400 250 Z" fill="#183B2B"/>
+            <path d="M120 80 L220 180 L160 250 Z" fill="#224437"/>
+          </svg>
+          
+          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-pine-900 flex items-center gap-1.5 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-adventure-500"></span>
+            1 kunlik sayohat
+          </div>
+
+          <div class="absolute top-3 right-3 bg-pine-900/90 text-white backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+            ⭐ 4.9 <span class="text-gray-400 font-normal">(128)</span>
+          </div>
+
+          <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white">
+            <div>
+              <span class="text-[10px] text-adventure-400 uppercase font-mono tracking-wider">Chotqol Qoyalari</span>
+              <h4 class="font-heading font-black text-xl leading-snug">Gulkam Kanyonlari & Sharshara</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 space-y-4">
+          <div class="flex items-center justify-between text-xs text-gray-500 border-b border-gray-100 pb-3">
+            <span>📍 Toshkentdan 85 km</span>
+            <span>⚡ O‘rta daraja</span>
+            <span>👥 Sprinter (18 kishi)</span>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <div>
+              <span class="text-[10px] text-gray-400 uppercase block font-semibold">1 kishi uchun</span>
+              <div class="font-heading font-black text-2xl text-pine-900">
+                280,000 <span class="text-sm font-normal text-gray-500">so‘m</span>
+              </div>
+            </div>
+
+            <button class="bg-adventure-500 hover:bg-adventure-600 text-white font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-adventure-500/25 transition-all active:scale-95">
+              O‘rinni Band Qilish →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- UI TOKENS & BUTTONS -->
+      <div class="lg:col-span-6 space-y-6">
+        
+        <!-- BUTTON STATES -->
+        <div class="bg-white p-6 rounded-3xl border border-gray-200">
+          <h4 class="font-heading font-bold text-sm text-pine-900 uppercase tracking-wider mb-4">Tugmalar Standarti (CTA Buttons)</h4>
+          <div class="flex flex-wrap gap-3">
+            <button class="bg-adventure-500 hover:bg-adventure-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-md shadow-adventure-500/20">
+              Asosiy Harakat (Primary)
+            </button>
+            <button class="bg-pine-900 hover:bg-pine-950 text-white px-5 py-2.5 rounded-xl text-xs font-bold">
+              Tizimga Kirish (Secondary)
+            </button>
+            <button class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-5 py-2.5 rounded-xl text-xs font-bold">
+              Yordam (Outline)
+            </button>
+          </div>
+        </div>
+
+        <!-- FOUNDING PARTNER BADGE -->
+        <div class="bg-gradient-to-r from-pine-900 to-pine-950 text-white p-6 rounded-3xl border border-pine-800 shadow-lg">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-full bg-adventure-500 flex items-center justify-center text-white font-bold text-sm">
+              ★
+            </div>
+            <div>
+              <span class="font-heading font-bold text-sm tracking-wide text-adventure-400">Verified Founding Partner</span>
+              <span class="text-xs text-gray-400 block">Asoschi Gid Nishoni (Umrbod Imtiyoz)</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-300 mt-2 leading-relaxed">
+            Ilk 10 ta hamkorga taqdim etiladigan maxsus nishon. Ushbu nishonga ega bo‘lgan gidlarning turlari platforma qidiruvida va bosh vitrinada doimiy birinchi o‘rinda ko‘rsatiladi.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. FOYDALANISH QOIDALARI: DO'S & DON'TS -->
+  <section id="rules" class="py-24 bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-adventure-500 mb-2">08 / Brend Boshqaruvi</h2>
+        <h3 class="font-heading font-extrabold text-3xl sm:text-4xl text-pine-900 tracking-tight">
+          Foydalanish Qoidalari (Do's & Don'ts)
+        </h3>
+        <p class="text-gray-600 mt-4 text-base leading-relaxed">
+          «Tashqariga» brendining qat'iyligi va estetikasi buzilmasligi uchun dizaynerlar, hamkorlar va marketing xodimlari quyidagi qoidalarga so‘zsiz amal qilishi shart.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- DO (TO'G'RI) -->
+        <div class="p-8 rounded-3xl bg-green-50/60 border border-green-200">
+          <div class="flex items-center gap-2 text-green-700 font-heading font-bold text-lg mb-6">
+            <span class="w-7 h-7 rounded-full bg-green-600 text-white flex items-center justify-center text-sm">✓</span>
+            Bajarilishi Shart (Do)
+          </div>
+          <ul class="space-y-4 text-sm text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-green-600 font-bold">1.</span>
+              <span>Logotipni faqat rasmiy ranglarda: To‘q yashil (`#183B2B`), Olovrang (`#FF5E1E`) yoki oq monoxromda ishlating.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-600 font-bold">2.</span>
+              <span>Fotosuratlarda faqat O‘zbekistonning haqiqiy tabiatini (soxta stock fotolarsiz) aks ettiring.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-600 font-bold">3.</span>
+              <span>Logotip atrofida doimo 1X kompas balandligidagi xavfsiz erkin maydonni saqlang.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-600 font-bold">4.</span>
+              <span>Tone of Voice muloqotida samimiy, dadil va mehmondo‘st bo‘ling («hurmatli mijoz» emas, «qadrdon do‘stim»).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- DON'T (NOTO'G'RI) -->
+        <div class="p-8 rounded-3xl bg-red-50/60 border border-red-200">
+          <div class="flex items-center gap-2 text-red-700 font-heading font-bold text-lg mb-6">
+            <span class="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center text-sm">✕</span>
+            Qat'iyan Man Etiladi (Don't)
+          </div>
+          <ul class="space-y-4 text-sm text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-red-600 font-bold">1.</span>
+              <span>Logotip proporsiyalarini cho‘zish, qisish yoki alohida elementlarini aylantirish.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-600 font-bold">2.</span>
+              <span>Logotipga sun'iy gradientlar, diffuz soyalar (drop shadow) yoki qizil/sariq begona ranglar berish.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-600 font-bold">3.</span>
+              <span>Detallarga to‘la yoki kontrastsiz rangli fotosurat ustiga logotipni qorong‘u holatda qo‘yish.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-600 font-bold">4.</span>
+              <span>Matnlarda sovuq korporativ jargon va byurokratik rasmiyatchilik bilan so‘zlashish.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-pine-950 text-white py-16 border-t border-pine-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-pine-900">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-pine-900 flex items-center justify-center">
+            <svg class="w-6 h-6" viewBox="0 0 100 100" fill="none">
+              <path d="M15 82 L48 24 L68 58 L80 38 L92 82 Z" fill="#F7F9F6"/>
+              <polygon points="56,52 48,48 78,22 60,60" fill="#FF5E1E"/>
+            </svg>
+          </div>
+          <span class="font-heading font-black text-xl tracking-tight">tashqariga<span class="text-adventure-500">.uz</span></span>
+        </div>
+
+        <div class="text-xs text-gray-400 text-center md:text-right">
+          <p>© 2026 Tashqariga.uz. Barcha huquqlar himoyalangan.</p>
+          <p class="mt-1 text-adventure-400">«Haqiqiy hayot — tashqarida.»</p>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <span>Rasmiy hujjat: Brand Identity & Visual Guidelines v2.0</span>
+        <div class="flex gap-6">
+          <a href="#hero" class="hover:text-white transition-colors">Yuqoriga qaytish ↑</a>
+          <a href="https://tashqariga.uz/partner" target="_blank" class="hover:text-adventure-400 transition-colors">B2B Hamkorlik portali</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR COPY HEX -->
+  <script>
+    function copyColor(hex, name) {
+      navigator.clipboard.writeText(hex).then(() => {
+        const toast = document.getElementById('toast');
+        const toastText = document.getElementById('toast-text');
+        toastText.innerText = `${name} (${hex}) nusxalandi!`;
+        toast.classList.add('toast-active');
+        setTimeout(() => {
+          toast.classList.remove('toast-active');
+        }, 2200);
+      }).catch(err => {
+        console.error('Nusxalashda xatolik:', err);
+      });
+    }
+  </script>
+
+</body>
+</html>

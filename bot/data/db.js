@@ -90,6 +90,15 @@ export const db = {
     return data.users[String(userId)] || null;
   },
 
+  updateUserPhone(userId, phone) {
+    const data = readDb();
+    const uid = String(userId);
+    if (data.users[uid]) {
+      data.users[uid].phone = phone;
+      writeDb(data);
+    }
+  },
+
   getAllUsers() {
     const data = readDb();
     return Object.values(data.users);

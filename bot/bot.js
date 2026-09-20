@@ -115,7 +115,7 @@ export async function sendAdminBookingNotification(booking) {
 💳 <b>To'lov turi:</b> ${escapeHtml(booking.paymentMethod || 'Click / Payme')}
 ⚡ <b>Holati:</b> ✅ Tasdiqlangan va bron qilingan
 ━━━━━━━━━━━━━━━━━━━━
-<i>Tashqariga.uz avtomatlashtirilgan bron qilish tizimi</i>`;
+<i>Tashqariga avtomatlashtirilgan bron qilish tizimi</i>`;
 
   const keyboard = new InlineKeyboard()
     .text('✅ Qabul qilindi', `booking_ack_${ticketNo}`)
@@ -205,7 +205,7 @@ bot.command('start', async (ctx) => {
       await bot.api.sendMessage(
         awardedReferrer.id,
         `🎉 <b>Ajoyib xabar!</b>\n\n` +
-        `Do'stingiz <b>${escapeHtml(fromUser.first_name || 'Foydalanuvchi')}</b> sizning maxsus havolangiz orqali <b>Tashqariga.uz</b> ga qo'shildi!\n\n` +
+        `Do'stingiz <b>${escapeHtml(fromUser.first_name || 'Foydalanuvchi')}</b> sizning maxsus havolangiz orqali <b>Tashqariga</b> loyihasiga qo'shildi!\n\n` +
         `💰 Sizga <b>+30,000 MountainCoin</b> taqdim etildi!\n` +
         `Joriy balansingiz: <b>${(awardedReferrer.mountainCoins || 0).toLocaleString('uz-UZ')} so'm</b>\n\n` +
         `<i>Ushbu tangalarni keyingi tog' safarlaringizda chegirma sifatida ishlatishingiz mumkin!</i> 🏔️`,
@@ -266,7 +266,7 @@ bot.command('start', async (ctx) => {
   const welcomeMessage = 
 `Salom, <b>${escapeHtml(fromUser.first_name || 'Tog\' oshig\'i')}</b>! 🏔️🌲
 
-<b>Tashqariga.uz</b> — O‘zbekistonning eng go‘zal cho‘qqilari, sirli sharsharalari va sokin nefrit ko‘llari bo‘ylab sarguzashtlar platformasiga xush kelibsiz! 🥾⛺
+<b>Tashqariga</b> — O‘zbekistonning eng go‘zal cho‘qqilari, sirli sharsharalari va sokin nefrit ko‘llari bo‘ylab sarguzashtlar platformasiga xush kelibsiz! 🥾⛺
 
 Biz sizga eng ishonchli va tajribali tog‘ gidlarining sara turlarini bitta joyda taqdim etamiz:
 ✨ <b>1 daqiqada</b> joy band qiling va elektron chipta oling
@@ -321,7 +321,7 @@ async function handleReferralCommand(ctx) {
 
   const refLink = `https://t.me/${BOT_USERNAME}?start=ref_${userId}`;
   const shareText = encodeURIComponent(
-    `Salom! Men Tashqariga.uz orqali O'zbekiston tog'lariga eng sara sayohatlarni topdim 🏔️\nUshbu havola orqali kirsangiz, sizga sayohatlar uchun 30,000 so'm xush kelibsiz bonusi beriladi:`
+    `Salom! Men Tashqariga orqali O'zbekiston tog'lariga eng sara sayohatlarni topdim 🏔️\nUshbu havola orqali kirsangiz, sizga sayohatlar uchun 30,000 so'm xush kelibsiz bonusi beriladi:`
   );
   const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(refLink)}&text=${shareText}`;
 
@@ -365,7 +365,7 @@ async function handlePartnerCommand(ctx) {
 `🧗‍♂️ <b>TOG' GIDLARI VA TUROPERATORLAR DIQQATIGA!</b> 🏔️
 ━━━━━━━━━━━━━━━━━━━━
 Siz professional tog' gidi, instruktor yoki sayohat agentligimisiz?
-<b>Tashqariga.uz</b> platformasi orqali har haftalik turlaringizni 10,000 dan ortiq faol tog' ishqibozlariga soting!
+<b>Tashqariga</b> platformasi orqali har haftalik turlaringizni 10,000 dan ortiq faol tog' ishqibozlariga soting!
 
 ✨ <b>BIZNING IMKONIYATLAR:</b>
 • <b>0% komissiya:</b> Yangi qo'shilgan gidlar uchun dastlabki 1 oy mutlaqo bepul!
@@ -446,7 +446,7 @@ Go'zal tog' cho'qqilari sizni kutmoqda! Yaqin kunlardagi qulay marshrutlardan bi
  */
 bot.command('help', async (ctx) => {
   const helpText = 
-`🌲 <b>Tashqariga.uz — Qo'llab-quvvatlash xizmati</b> 🧭
+`🌲 <b>Tashqariga — Qo'llab-quvvatlash xizmati</b> 🧭
 ━━━━━━━━━━━━━━━━━━━━
 Savollaringiz bormi yoki sayohat tanlashda yordam kerakmi? Biz har doim aloqadamiz!
 
@@ -481,7 +481,7 @@ bot.command('admin', async (ctx) => {
 
   const stats = db.getStats();
   const adminText = 
-`⚙️ <b>TASHQARIGA.UZ — ADMIN BOSHQARUV PANEL</b>
+`⚙️ <b>TASHQARIGA — ADMIN BOSHQARUV PANEL</b>
 ━━━━━━━━━━━━━━━━━━━━
 👥 <b>Jami foydalanuvchilar:</b> ${stats.totalUsers} ta
 🎫 <b>Jami buyurtmalar:</b> ${stats.totalBookings} ta
@@ -538,7 +538,7 @@ bot.callbackQuery('action_main_menu', async (ctx) => {
   const userId = ctx.from.id;
   await ctx.editMessageText(
     `Salom, <b>${escapeHtml(ctx.from.first_name || 'Tog\' oshig\'i')}</b>! 🏔️🌲\n\n` +
-    `<b>Tashqariga.uz</b> — O‘zbekiston tog‘lari bo‘ylab eng yaxshi sarguzashtlar agregatori.\n` +
+    `<b>Tashqariga</b> — O‘zbekiston tog‘lari bo‘ylab eng yaxshi sarguzashtlar agregatori.\n` +
     `Kerakli bo'limni tanlang:`,
     {
       parse_mode: 'HTML',
@@ -576,7 +576,7 @@ bot.callbackQuery('action_mybookings', async (ctx) => {
 bot.callbackQuery('action_help', async (ctx) => {
   await ctx.answerCallbackQuery();
   const helpText = 
-`🌲 <b>Tashqariga.uz — Qo'llab-quvvatlash xizmati</b> 🧭\n\n` +
+`🌲 <b>Tashqariga — Qo'llab-quvvatlash xizmati</b> 🧭\n\n` +
 `📞 Telefon: +998 (71) 200-44-88\n` +
 `💬 Telegram: @tashqariga_support\n` +
 `Har kuni 24 soat xizmatingizdamiz!`;
@@ -710,25 +710,36 @@ bot.on('message:text', async (ctx) => {
     session.step = 'waiting_phone';
     guideApplicationSessions.set(userId, session);
 
+    const contactKeyboard = new Keyboard()
+      .requestContact('📱 Telefon raqamimni yuborish')
+      .resized()
+      .oneTime();
+
     return ctx.reply(
       `Rahmat, <b>${escapeHtml(session.data.name)}</b>!\n\n` +
-      `<b>(2/3 qadam)</b> Iltimos, bog'lanish uchun telefon raqamingizni yuboring:\n` +
+      `<b>(2/3 qadam)</b> Iltimos, pastdagi <b>«📱 Telefon raqamimni yuborish»</b> tugmasini bosing yoki raqamingizni yozib yuboring:\n` +
       `<i>(Masalan: +998 90 123 45 67)</i>`,
-      { parse_mode: 'HTML' }
+      { 
+        parse_mode: 'HTML',
+        reply_markup: contactKeyboard
+      }
     );
   }
 
-  // 2-qadam: Telefon kiritildi
+  // 2-qadam: Telefon matn sifatida kiritildi (agar tugmani bosmay yozsa)
   if (session.step === 'waiting_phone') {
     session.data.phone = ctx.message.text.trim();
     session.step = 'waiting_regions';
     guideApplicationSessions.set(userId, session);
 
     return ctx.reply(
-      `Ajoyib!\n\n` +
+      `Ajoyib! Qabul qilindi.\n\n` +
       `<b>(3/3 qadam)</b> Odatda qaysi tog' yo'nalishlarida turlar tashkil qilasiz va tajribangiz necha yil?\n` +
       `<i>(Masalan: Chimyon, Urung'och, Zomin kemping, tajribam 4 yil)</i>`,
-      { parse_mode: 'HTML' }
+      { 
+        parse_mode: 'HTML',
+        reply_markup: { remove_keyboard: true }
+      }
     );
   }
 
@@ -746,7 +757,7 @@ bot.on('message:text', async (ctx) => {
     const successMsg = 
 `🎉 <b>Arizangiz muvaffaqiyatli qabul qilindi!</b>\n\n` +
 `Hurmatli <b>${escapeHtml(session.data.name)}</b>, tez orada menejerimiz yoki loyiha rahbari siz bilan bog'lanib, shaxsiy gidlar kabinetini faollashtiradi.\n\n` +
-`Tashqariga.uz oilasiga xush kelibsiz! 🏔️`;
+`Tashqariga oilasiga xush kelibsiz! 🏔️`;
 
     const keyboard = new InlineKeyboard()
       .url('💬 CEO bilan to\'g\'ridan-to\'g\'ri bog\'lanish', `https://t.me/${CEO_TELEGRAM.replace('@', '')}`)
@@ -760,6 +771,63 @@ bot.on('message:text', async (ctx) => {
       reply_markup: keyboard
     });
   }
+});
+
+/**
+ * Telegram orqali yuborilgan kontaktni (telefon raqamini) qabul qilish
+ */
+bot.on('message:contact', async (ctx) => {
+  const userId = ctx.from.id;
+  const phoneNumber = ctx.message.contact.phone_number;
+  const formattedPhone = phoneNumber.startsWith('+') ? phoneNumber : `+${phoneNumber}`;
+
+  const session = guideApplicationSessions.get(userId);
+  if (session && session.step === 'waiting_phone') {
+    session.data.phone = formattedPhone;
+    session.step = 'waiting_regions';
+    guideApplicationSessions.set(userId, session);
+
+    return ctx.reply(
+      `✅ Telefon raqamingiz tasdiqlandi: <b>${formattedPhone}</b>\n\n` +
+      `<b>(3/3 qadam)</b> Odatda qaysi tog' yo'nalishlarida turlar tashkil qilasiz va tajribangiz necha yil?\n` +
+      `<i>(Masalan: Chimyon, Urung'och, Zomin kemping, tajribam 4 yil)</i>`,
+      { 
+        parse_mode: 'HTML',
+        reply_markup: { remove_keyboard: true }
+      }
+    );
+  }
+
+  // Agar oddiy foydalanuvchi kontaktini ulashgan bo'lsa
+  db.updateUserPhone(userId, formattedPhone);
+  await ctx.reply(
+    `✅ <b>Telefon raqamingiz muvaffaqiyatli tasdiqlandi!</b>\n\n` +
+    `📱 Raqam: <code>${formattedPhone}</code>\n\n` +
+    `Endi Tashqariga platformasida barcha yangi sayohat chiptalaringiz ushbu raqamga rasmiylashtiriladi! 🏔️`,
+    { 
+      parse_mode: 'HTML',
+      reply_markup: { remove_keyboard: true }
+    }
+  );
+});
+
+/**
+ * /phone komandasi — Telefon raqamni Telegram orqali tezkor tasdiqlash
+ */
+bot.command('phone', async (ctx) => {
+  const keyboard = new Keyboard()
+    .requestContact('📱 Telefon raqamimni yuborish')
+    .resized()
+    .oneTime();
+
+  await ctx.reply(
+    `📱 <b>Telegram orqali telefon raqamingizni tasdiqlang:</b>\n\n` +
+    `Pastdagi <b>«📱 Telefon raqamimni yuborish»</b> tugmasini bosing va raqamingizni <b>Tashqariga</b> profilingizga ulang:`,
+    {
+      parse_mode: 'HTML',
+      reply_markup: keyboard
+    }
+  );
 });
 
 // ==============================================================================
