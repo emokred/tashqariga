@@ -27,7 +27,7 @@ const __dirname = path.dirname(__filename);
 const BOT_TOKEN = process.env.BOT_TOKEN || '8919209304:AAG2-e-kmAJc82pw7wcARnVKEFKDJWL3BUE';
 const WEBAPP_URL = process.env.WEBAPP_URL || process.env.WEB_APP_URL || 'https://tashqariga.vercel.app';
 const BOT_USERNAME = process.env.BOT_USERNAME || 'tashqarigauz_bot';
-const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID || '';
+let ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID || '';
 const CEO_TELEGRAM = process.env.CEO_TELEGRAM || '@tashqarigauz';
 const PORT = process.env.PORT || 3001;
 
@@ -500,6 +500,33 @@ bot.command('admin', async (ctx) => {
     parse_mode: 'HTML',
     reply_markup: keyboard
   });
+});
+
+/**
+ * /myid komandasi — Foydalanuvchining shaxsiy Telegram Chat ID sini ko'rsatish
+ */
+bot.command('myid', async (ctx) => {
+  const chatId = ctx.chat.id;
+  await ctx.reply(
+    `🆔 <b>Sizning Telegram Chat ID:</b> <code>${chatId}</code>\n\n` +
+    `💡 Ushbu ID orqali bot sizni admin yoki buyurtmachi sifatida taniydi.`,
+    { parse_mode: 'HTML' }
+  );
+});
+
+/**
+ * /setadmin komandasi — Ushbu chatni asosiy bildirishnomalar qabul qiluvchi admin deb belgilash
+ */
+bot.command('setadmin', async (ctx) => {
+  const chatId = ctx.chat.id;
+  ADMIN_CHAT_ID = String(chatId);
+  process.env.ADMIN_CHAT_ID = String(chatId);
+  await ctx.reply(
+    `✅ <b>Muvaffaqiyatli! Ushbu chat bildirishnoma admini sifatida biriktirildi!</b>\n\n` +
+    `📌 Admin Chat ID: <code>${chatId}</code>\n\n` +
+    `Endi sayt yoki Telegram bot orqali tushgan barcha yangi chipta buyurtmalari va gid arizalari ushbu chatga zudlik bilan yetkaziladi! 🔔🏔️`,
+    { parse_mode: 'HTML' }
+  );
 });
 
 // ==============================================================================
