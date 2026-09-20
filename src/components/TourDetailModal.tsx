@@ -270,8 +270,8 @@ export default function TourDetailModal() {
                 </a>
                 <button
                   onClick={() => {
-                    const shareText = `🏔️ Tashqariga.uz orqali ajoyib tog‘ sayohati: ${selectedTour.title}!\n📅 Sana: ${selectedTour.displayDate}\n💰 Narxi: ${selectedTour.price.toLocaleString()} so‘m\nJoy band qilish:`;
-                    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://tashqariga.uz';
+                    const shareText = `🏔️ Tashqariga orqali ajoyib tog‘ sayohati: ${selectedTour.title}!\n📅 Sana: ${selectedTour.displayDate}\n💰 Narxi: ${selectedTour.price.toLocaleString()} so‘m\nJoy band qilish:`;
+                    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://tashqariga.vercel.app';
                     const tgUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
                     window.open(tgUrl, '_blank');
                   }}

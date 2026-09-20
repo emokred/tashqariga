@@ -23,14 +23,15 @@ interface AppContextType {
   addTour: (newTourData: Omit<Tour, 'id' | 'slug'>) => Tour;
   toggleSoldOut: (tourId: string) => void;
   usePointsForDiscount: (points: number) => void;
+  requestTelegramContact: (onSuccess: (phone: string) => void) => void;
 }
 
 const DEFAULT_USER: UserProfile = {
   id: 'user-default',
-  name: 'Azizbek Rahimov',
-  phone: '+998 90 123 45 67',
-  telegramUsername: '@azizbek_nature',
-  mountainCoins: 30000, // 30,000 so'm xush kelibsiz bonusi
+  name: '',
+  phone: '',
+  telegramUsername: '',
+  mountainCoins: 0,
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -46,15 +47,69 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isTwa, setIsTwa] = useState(false);
 
+  // Helper to request Telegram verified phone contact in Mini App
+  const requestTelegramContact = (onSuccess: (phone: string) => void) => {
+    if (typeof window !== 'undefined') {
+      const tg = (window as unknown as { 
+        Telegram?: { 
+          WebApp?: { 
+            requestContact?: (callback: (shared: boolean, res?: { response?: string }) => void) => void 
+          } 
+        } 
+      }).Telegram?.WebApp;
+
+      if (tg?.requestContact) {
+        tg.requestContact((shared, data) => {
+          if (shared && data) {
+            try {
+              const parsed = typeof data.response === 'string' ? JSON.parse(data.response) : data.response;
+              const phone = parsed?.contact?.phone_number || '';
+              const formatted = phone.startsWith('+') ? phone : `+${phone}`;
+              if (formatted) {
+                setUserProfile((prev) => ({ ...prev, phone: formatted }));
+                onSuccess(formatted);
+              }
+            } catch {
+              if (typeof data.response === 'string' && data.response.length > 5) {
+                const formatted = data.response.startsWith('+') ? data.response : `+${data.response}`;
+                setUserProfile((prev) => ({ ...prev, phone: formatted }));
+                onSuccess(formatted);
+              }
+            }
+          }
+        });
+      }
+    }
+  };
+
   // Load from localStorage on client mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Telegram WebApp detection
-      const tg = (window as unknown as { Telegram?: { WebApp?: { initDataUnsafe?: { user?: { first_name?: string; last_name?: string; username?: string } }; ready?: () => void; expand?: () => void } } }).Telegram?.WebApp;
+      // Telegram WebApp detection and full-height setup
+      const tg = (window as unknown as { 
+        Telegram?: { 
+          WebApp?: { 
+            initDataUnsafe?: { user?: { first_name?: string; last_name?: string; username?: string; id?: number } }; 
+            ready?: () => void; 
+            expand?: () => void;
+            enableClosingConfirmation?: () => void;
+            setHeaderColor?: (color: string) => void;
+            setBackgroundColor?: (color: string) => void;
+          } 
+        } 
+      }).Telegram?.WebApp;
+
       if (tg) {
         setIsTwa(true);
         tg.ready?.();
         tg.expand?.();
+        tg.enableClosingConfirmation?.();
+        try {
+          tg.setHeaderColor?.('#183B2B');
+          tg.setBackgroundColor?.('#F7F9F6');
+        } catch {
+          // ignore if color methods not supported in client version
+        }
 
         const tgUser = tg.initDataUnsafe?.user;
         if (tgUser?.first_name) {
@@ -217,6 +272,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         addTour,
         toggleSoldOut,
         usePointsForDiscount,
+        requestTelegramContact,
       }}
     >
       {children}

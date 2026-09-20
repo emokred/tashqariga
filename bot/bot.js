@@ -929,8 +929,9 @@ export async function startServices() {
       await bot.api.setMyCommands([
         { command: 'start', description: '🏔️ Asosiy menyu va Mini App' },
         { command: 'turlar', description: '🎒 Ommabop tog\' turlari' },
-        { command: 'mybookings', description: '🎟️ Mening sayohat chiptalarim' },
-        { command: 'partner', description: '🧗‍♂️ Gidlar va turoperatorlar bo\'limi' },
+        { command: 'phone', description: '📱 Telefon raqamni tasdiqlash' },
+        { command: 'mybookings', description: '🎟️ Mening chiptalarim' },
+        { command: 'partner', description: '🧗‍♂️ Gidlar va hamkorlar' },
         { command: 'help', description: '💬 Yordam va 24/7 aloqa' },
       ]);
 

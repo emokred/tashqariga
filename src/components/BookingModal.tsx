@@ -30,12 +30,14 @@ export default function BookingModal() {
     addBooking, 
     userProfile, 
     usePointsForDiscount,
-    setIsMyTripsOpen
+    setIsMyTripsOpen,
+    isTwa,
+    requestTelegramContact,
   } = useApp();
 
   const [seatsCount, setSeatsCount] = useState(1);
   const [customerName, setCustomerName] = useState(userProfile.name || '');
-  const [customerPhone, setCustomerPhone] = useState(userProfile.phone || '+998 ');
+  const [customerPhone, setCustomerPhone] = useState(userProfile.phone || '');
   const [customerTelegram, setCustomerTelegram] = useState(userProfile.telegramUsername || '');
   const [paymentMethod, setPaymentMethod] = useState<'click' | 'payme' | 'uzum' | 'card' | 'p2p_test'>('click');
   const [usePoints, setUsePoints] = useState(false);
@@ -303,9 +305,24 @@ export default function BookingModal() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">
-                    Telefon raqam
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold text-gray-700">
+                      Telefon raqam
+                    </label>
+                    {isTwa && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          requestTelegramContact((phone) => {
+                            setCustomerPhone(phone);
+                          });
+                        }}
+                        className="text-[11px] font-bold text-[#229ED9] hover:underline flex items-center gap-1 active:scale-95 transition-all"
+                      >
+                        <span>📱 Telegram raqamni ulash</span>
+                      </button>
+                    )}
+                  </div>
                   <div className="flex items-center gap-2 px-3 py-2.5 bg-gray-50 rounded-xl border border-gray-200 focus-within:border-pine-600 focus-within:bg-white transition-all">
                     <Phone className="w-4 h-4 text-gray-400" />
                     <input
