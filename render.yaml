@@ -1,0 +1,23 @@
+# ==========================================
+# Render.com Blueprint for Tashqariga.uz
+# Documentation: https://render.com/docs/blueprint-spec
+# ==========================================
+
+services:
+  - type: web
+    name: tashqariga
+    runtime: node
+    plan: free # Bepul reja (yoki 'starter' 24/7 faol turish uchun)
+    region: frankfurt # O'zbekiston uchun eng past ping / eng yaqin Yevropa data-markazi
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20.17.0
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_APP_URL
+        value: https://tashqariga.uz
