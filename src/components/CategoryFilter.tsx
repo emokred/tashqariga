@@ -1,14 +1,12 @@
 'use client';
 
 import React from 'react';
-import { TourCategory, TourSegment } from '@/types';
-import { Footprints, Tent, Mountain, Waves, Sparkles, Award, Crown } from 'lucide-react';
+import { TourCategory } from '@/types';
+import { Footprints, Tent, Sparkles } from 'lucide-react';
 
 interface CategoryFilterProps {
   selectedCategory: TourCategory;
   setSelectedCategory: (cat: TourCategory) => void;
-  selectedSegment: TourSegment;
-  setSelectedSegment: (seg: TourSegment) => void;
   totalCount: number;
 }
 
