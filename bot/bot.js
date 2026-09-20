@@ -24,11 +24,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Muhit o'zgaruvchilari
-const BOT_TOKEN = process.env.BOT_TOKEN || '';
-const WEBAPP_URL = process.env.WEBAPP_URL || 'https://tashqariga.uz';
-const BOT_USERNAME = process.env.BOT_USERNAME || 'tashqariga_bot';
+const BOT_TOKEN = process.env.BOT_TOKEN || '8919209304:AAG2-e-kmAJc82pw7wcARnVKEFKDJWL3BUE';
+const WEBAPP_URL = process.env.WEBAPP_URL || process.env.WEB_APP_URL || 'https://tashqariga.vercel.app';
+const BOT_USERNAME = process.env.BOT_USERNAME || 'tashqarigauz_bot';
 const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID || '';
-const CEO_TELEGRAM = process.env.CEO_TELEGRAM || '@tashqariga_ceo';
+const CEO_TELEGRAM = process.env.CEO_TELEGRAM || '@tashqarigauz';
 const PORT = process.env.PORT || 3001;
 
 if (!BOT_TOKEN || BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN_HERE') {
@@ -56,11 +56,10 @@ function getMainInlineKeyboard(userId) {
     .text('🎒 Ommabop Turlar', 'action_turlar')
     .text('🎟️ Chiptalarim', 'action_mybookings')
     .row()
-    .text('🎁 Do\'stlarni taklif qilish (+30k)', 'action_referral')
     .text('🧗‍♂️ Gidlar & Hamkorlar', 'action_partner')
+    .text('💬 Yordam & Aloqa', 'action_help')
     .row()
-    .text('💬 Yordam & Qo\'llab-quvvatlash', 'action_help')
-    .url('🌐 Saytga o\'tish', WEBAPP_URL);
+    .url('🌐 Saytda Ko‘rish', WEBAPP_URL);
 }
 
 /**
@@ -267,25 +266,26 @@ bot.command('start', async (ctx) => {
   const welcomeMessage = 
 `Salom, <b>${escapeHtml(fromUser.first_name || 'Tog\' oshig\'i')}</b>! 🏔️🌲
 
-<b>Tashqariga.uz</b> — O‘zbekistonning eng go‘zal cho‘qqilari, sirli sharsharalari va sokin nefrit ko‘llari bo‘ylab sarguzashtlar agregatoriga xush kelibsiz! 🥾⛺
+<b>Tashqariga.uz</b> — O‘zbekistonning eng go‘zal cho‘qqilari, sirli sharsharalari va sokin nefrit ko‘llari bo‘ylab sarguzashtlar platformasiga xush kelibsiz! 🥾⛺
 
-Biz sizga eng ishonchli va tajribali tog‘ gidlarining eng sara turlarini bitta qulay platformada taqdim etamiz:
-✨ <b>1 daqiqada</b> joy band qiling va QR chipta oling
-💳 <b>Click & Payme</b> orqali xavfsiz to'lov
-🎁 Har bir sayohat uchun <b>5% keshbek</b>
-👥 Do'stlarni taklif qilib, safarga <b>bepul</b> boring!
+Biz sizga eng ishonchli va tajribali tog‘ gidlarining sara turlarini bitta joyda taqdim etamiz:
+✨ <b>1 daqiqada</b> joy band qiling va elektron chipta oling
+🛡️ <b>100% Xavfsizlik</b> va rasmiy gidlar hamrohligi
+💬 Gidlar bilan to‘g‘ridan-to‘g‘ri aloqa va safar guruhlari
 
-Quyidagi <b>«🏔️ Tashqariga Mini App»</b> tugmasini bosib, sayohatlarni Telegramdan chiqmasdan kashf eting:`;
+Quyidagi <b>«🏔️ Tashqariga Mini App»</b> tugmasini bosib, sayohatlarni kashf eting:`;
 
   // Mini App menyu tugmasini o'rnatish
   try {
     await ctx.setChatMenuButton({
-      type: 'web_app',
-      text: '🏔️ Tashqariga',
-      web_app: { url: WEBAPP_URL }
+      menu_button: {
+        type: 'web_app',
+        text: '🏔️ Tashqariga',
+        web_app: { url: WEBAPP_URL }
+      }
     });
   } catch (err) {
-    // Agar botFather orqali global o'rnatilgan bo'lsa xatolik berishi mumkin
+    // Agar allaqachon o'rnatilgan bo'lsa xatolik bermaydi
   }
 
   await ctx.reply(welcomeMessage, {
@@ -834,11 +834,9 @@ export async function startServices() {
       await bot.api.setMyCommands([
         { command: 'start', description: '🏔️ Asosiy menyu va Mini App' },
         { command: 'turlar', description: '🎒 Ommabop tog\' turlari' },
-        { command: 'referral', description: '🎁 Do\'stlarni taklif qilish (+30k)' },
         { command: 'mybookings', description: '🎟️ Mening sayohat chiptalarim' },
         { command: 'partner', description: '🧗‍♂️ Gidlar va turoperatorlar bo\'limi' },
         { command: 'help', description: '💬 Yordam va 24/7 aloqa' },
-        { command: 'admin', description: '⚙️ Boshqaruv statistikasi (admin)' },
       ]);
 
       // Global WebApp Menyu tugmasini sozlash
