@@ -252,9 +252,25 @@ export default function TourDetailModal() {
 
               {/* Quick Contacts & Share */}
               <div className="flex flex-wrap items-center gap-2">
+                <a
+                  href={`https://t.me/${selectedTour.organizer.telegram.replace('@', '')}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-xs font-bold text-white bg-[#229ED9] hover:bg-[#1E88E5] px-3.5 py-2 rounded-xl transition-all shadow-sm"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Gidga Savol Berish</span>
+                </a>
+                <a
+                  href={`tel:${selectedTour.organizer.phone}`}
+                  className="flex items-center gap-1 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-xl transition-all"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Qo‘ng‘iroq</span>
+                </a>
                 <button
                   onClick={() => {
-                    const shareText = `🏔️ Tashqariga.uz orqali ajoyib tog‘ sayohati: ${selectedTour.title}!\n📅 Sana: ${selectedTour.displayDate}\n💰 Narxi: ${selectedTour.price.toLocaleString()} so‘m\nJoy band qilish uchun kiring:`;
+                    const shareText = `🏔️ Tashqariga.uz orqali ajoyib tog‘ sayohati: ${selectedTour.title}!\n📅 Sana: ${selectedTour.displayDate}\n💰 Narxi: ${selectedTour.price.toLocaleString()} so‘m\nJoy band qilish:`;
                     const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://tashqariga.uz';
                     const tgUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
                     window.open(tgUrl, '_blank');
@@ -263,15 +279,8 @@ export default function TourDetailModal() {
                   title="Telegram orqali ulashish"
                 >
                   <Send className="w-3.5 h-3.5 text-pine-700" />
-                  <span>Do‘stlarga ulashish</span>
+                  <span>Ulashish</span>
                 </button>
-                <a
-                  href={`tel:${selectedTour.organizer.phone}`}
-                  className="flex items-center gap-1 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-xl transition-all"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Qo‘ng‘iroq</span>
-                </a>
               </div>
             </div>
           </div>

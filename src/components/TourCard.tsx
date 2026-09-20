@@ -64,10 +64,16 @@ export default function TourCard({ tour }: TourCardProps) {
 
         {/* Top Badges */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
-          {/* Segment Tag */}
-          <span className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md backdrop-blur-sm ${segmentColors[tour.segment]}`}>
-            {segmentLabels[tour.segment]}
-          </span>
+          {/* Demo or Live Badge */}
+          {tour.isDemo ? (
+            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md bg-amber-500 text-white backdrop-blur-sm">
+              🟡 Namuna (Demo)
+            </span>
+          ) : (
+            <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md bg-emerald-600 text-white backdrop-blur-sm">
+              🟢 Haqiqiy Tur
+            </span>
+          )}
 
           {/* Difficulty Tag */}
           <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border shadow-sm ${difficultyColors[tour.difficulty]}`}>

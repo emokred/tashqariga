@@ -216,24 +216,36 @@ export default function BookingModal() {
               </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-2 pt-2">
-                <button
-                  onClick={() => {
-                    handleClose();
-                    setIsMyTripsOpen(true);
-                  }}
-                  className="w-full bg-pine-900 hover:bg-pine-950 text-white font-bold py-3 rounded-xl text-sm transition-all shadow active:scale-95"
-                >
-                  Safarlarim bo‘limiga o‘tish
-                </button>
-                <button
-                  onClick={() => window.print()}
-                  className="w-full sm:w-auto flex items-center justify-center gap-1.5 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold px-4 py-3 rounded-xl text-sm transition-all"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Chop etish</span>
-                </button>
-              </div>
+                <div className="space-y-2 pt-2">
+                  <a
+                    href={selectedTour.tgGroupLink || 'https://t.me/tashqarigauz'}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full flex items-center justify-center gap-2 bg-[#229ED9] hover:bg-[#1E88E5] text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md active:scale-95"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Safar Telegram Guruhiga Qo‘shilish</span>
+                  </a>
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        handleClose();
+                        setIsMyTripsOpen(true);
+                      }}
+                      className="flex-1 bg-pine-900 hover:bg-pine-950 text-white font-bold py-3 rounded-xl text-xs sm:text-sm transition-all shadow active:scale-95"
+                    >
+                      Chiptalarimda ko‘rish
+                    </button>
+                    <button
+                      onClick={() => window.print()}
+                      className="flex items-center justify-center gap-1.5 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold px-4 py-3 rounded-xl text-xs sm:text-sm transition-all"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>Saqlash</span>
+                    </button>
+                  </div>
+                </div>
             </div>
           ) : (
             /* BOOKING FORM */
@@ -324,29 +336,6 @@ export default function BookingModal() {
                   <span className="text-[10px] text-gray-400">Gid guruh chatiga qo‘shishi uchun kerak</span>
                 </div>
               </div>
-
-              {/* Loyalty Discount Option */}
-              {userProfile.mountainCoins > 0 && (
-                <div className="bg-amber-50 border border-amber-200/90 rounded-2xl p-3 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Coins className="w-5 h-5 text-amber-500" />
-                    <div>
-                      <div className="text-xs font-bold text-amber-950">
-                        {userProfile.mountainCoins.toLocaleString()} so‘m keshbek ballaringiz bor
-                      </div>
-                      <div className="text-[11px] text-amber-800">
-                        Ushbu chiptaga chegirma sifatida ishlatish
-                      </div>
-                    </div>
-                  </div>
-                  <input
-                    type="checkbox"
-                    checked={usePoints}
-                    onChange={(e) => setUsePoints(e.target.checked)}
-                    className="w-4 h-4 text-adventure-500 rounded border-amber-300 focus:ring-adventure-500 cursor-pointer"
-                  />
-                </div>
-              )}
 
               {/* Payment Methods */}
               <div>

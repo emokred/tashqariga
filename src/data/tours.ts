@@ -65,7 +65,9 @@ export const INITIAL_TOURS: Tour[] = [
       { time: '15:00', title: 'Mashhur So‘qoq tushligi', description: 'Mahalliy choyxonada mashhur So‘qoq somsasi va kabobidan bahramand bo‘lish' },
       { time: '18:00', title: 'Toshkentga qaytish', description: 'Xotirjam va zavqli taassurotlar bilan shaharga qaytish' }
     ],
-    isFeatured: true
+    isFeatured: true,
+    isDemo: true,
+    tgGroupLink: 'https://t.me/tashqarigauz'
   },
   {
     id: 'tour-chimyon-choqqisi',
@@ -132,7 +134,9 @@ export const INITIAL_TOURS: Tour[] = [
       { time: '15:00', title: 'Xavfsiz tushish', description: 'Instruktorlar nazorati ostida pastga tushish' },
       { time: '21:00', title: 'Toshkentga yetib kelish', description: 'Unutilmas g‘alaba hissi bilan uyga qaytish' }
     ],
-    isFeatured: true
+    isFeatured: true,
+    isDemo: true,
+    tgGroupLink: 'https://t.me/tashqarigauz'
   },
   {
     id: 'tour-urungach-nefrit',
@@ -197,7 +201,9 @@ export const INITIAL_TOURS: Tour[] = [
       { time: '13:30', title: 'Katta ko‘l va piknik', description: 'Firuza suv bo‘yida ovqatlanish va dam olish' },
       { time: '17:00', title: 'Pastga tushish va qaytish', description: 'Avtobus tomon yurish va Toshkent sari yo‘l' }
     ],
-    isFeatured: true
+    isFeatured: true,
+    isDemo: true,
+    tgGroupLink: 'https://t.me/tashqarigauz'
   },
   {
     id: 'tour-zomin-kembing',
@@ -266,7 +272,9 @@ export const INITIAL_TOURS: Tour[] = [
       { time: '2-kun 10:00', title: 'Bobo-Yong‘oq daraxti', description: 'Ming yillik qadimiy daraxt va sharsharaga sayr' },
       { time: '2-kun 15:00', title: 'Toshkent sari yo‘l', description: 'Dam olgan va tetik kayfiyatda shaharga qaytish' }
     ],
-    isFeatured: true
+    isFeatured: true,
+    isDemo: true,
+    tgGroupLink: 'https://t.me/tashqarigauz'
   },
   {
     id: 'tour-lashkerek-kanyon',
@@ -325,7 +333,9 @@ export const INITIAL_TOURS: Tour[] = [
       { time: '09:00', title: 'Kanyon og‘zi', description: 'Piyoda trekkingni boshlash' },
       { time: '12:30', title: 'Sharshara va darada dam olish', description: 'Piknik va fotosessiya' },
       { time: '16:30', title: 'Mashinaga qaytish', description: 'Toshkent sari harakat' }
-    ]
+    ],
+    isDemo: true,
+    tgGroupLink: 'https://t.me/tashqarigauz'
   },
   {
     id: 'tour-boysun-kanyon',
@@ -386,6 +396,8 @@ export const INITIAL_TOURS: Tour[] = [
       { time: '1-kun 15:00', title: 'Omonxona bulog‘i', description: 'Shifobaxsh mineral buloq va dam olish' },
       { time: '2-kun 09:00', title: 'Teshiktosh g‘ori', description: 'Tarixiy manzilga chiqish' },
       { time: '2-kun 16:00', title: 'Toshkent sari poyezd', description: 'Unutilmas taassurotlar bilan qaytish' }
-    ]
+    ],
+    isDemo: true,
+    tgGroupLink: 'https://t.me/tashqarigauz'
   }
 ];

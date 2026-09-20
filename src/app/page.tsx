@@ -89,8 +89,6 @@ export default function HomePage() {
       <CategoryFilter
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
-        selectedSegment={selectedSegment}
-        setSelectedSegment={setSelectedSegment}
         totalCount={filteredTours.length}
       />
 

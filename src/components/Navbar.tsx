@@ -40,22 +40,13 @@ export default function Navbar() {
 
           {/* Right Action buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Loyalty Points Badge */}
-            <div className="hidden sm:flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 px-3 py-1.5 rounded-full">
-              <Coins className="w-4 h-4 text-amber-500" />
-              <span className="text-xs font-bold text-amber-900">
-                {userProfile.mountainCoins.toLocaleString()} so‘m
-              </span>
-              <span className="text-[10px] text-amber-700 font-medium">keshbek</span>
-            </div>
-
             {/* My Trips Button */}
             <button
               onClick={() => setIsMyTripsOpen(true)}
               className="relative flex items-center gap-1.5 bg-pine-50 hover:bg-pine-100 text-pine-900 font-semibold px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border border-pine-200/60 active:scale-95"
             >
               <Ticket className="w-4 h-4 text-pine-700" />
-              <span className="hidden xs:inline">Safarlarim</span>
+              <span className="hidden xs:inline">Chiptalarim</span>
               {bookings.length > 0 && (
                 <span className="w-5 h-5 bg-adventure-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center">
                   {bookings.length}
@@ -63,24 +54,14 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* Partner / Admin Portal Button */}
-            <button
-              onClick={() => setIsPartnerPortalOpen(true)}
-              className="flex items-center gap-1.5 bg-gray-900 hover:bg-black text-white font-medium px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm transition-all shadow-sm active:scale-95"
-              title="Gidlar va Turoperatorlar kabineti"
-            >
-              <PlusCircle className="w-4 h-4 text-adventure-400" />
-              <span className="hidden md:inline">Gidlar & Hamkorlar</span>
-              <span className="md:hidden">Hamkor</span>
-            </button>
-
             {/* Support / Help Button */}
             <button
               onClick={() => setIsSupportOpen(true)}
-              className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all"
+              className="flex items-center gap-1.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-xl transition-all text-xs sm:text-sm font-medium border border-gray-200"
               title="Yordam va Savollar"
             >
-              <HelpCircle className="w-5 h-5" />
+              <HelpCircle className="w-4 h-4 text-pine-700" />
+              <span className="hidden sm:inline">Yordam</span>
             </button>
           </div>
         </div>

@@ -1,0 +1,21 @@
+{
+  "users": {
+    "1812234273": {
+      "id": "1812234273",
+      "firstName": "The Freedom Junior",
+      "lastName": "",
+      "username": "@iskandar0v_s",
+      "mountainCoins": 30000,
+      "referredBy": null,
+      "referralCount": 0,
+      "createdAt": "2026-09-20T13:15:00.343Z"
+    }
+  },
+  "bookings": [],
+  "partnerApplications": [],
+  "stats": {
+    "totalUsers": 1,
+    "totalBookings": 0,
+    "totalMountainCoinsDistributed": 30000
+  }
+}

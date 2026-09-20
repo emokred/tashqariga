@@ -49,6 +49,8 @@ export interface Tour {
   organizer: Organizer;
   itinerary: ItineraryItem[];
   isFeatured?: boolean;
+  isDemo?: boolean;
+  tgGroupLink?: string;
 }
 
 export interface Booking {
