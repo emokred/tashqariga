@@ -945,9 +945,18 @@ export async function startServices() {
       });
 
       console.log('✅ [Telegram Bot Commands & Menu Button] Muvaffaqiyatli sozlandi!');
+
+      // Oldingi faol bo'lgan webhooklarni o'chirish (409 Conflict xatoligini oldini olish)
+      await bot.api.deleteWebhook({ drop_pending_updates: false });
+
       console.log(`🏔️ [Tashqariga Bot] @${BOT_USERNAME} Long-polling rejimida ishga tushdi...`);
 
-      bot.start();
+      bot.start({
+        drop_pending_updates: false,
+        onStart: (botInfo) => {
+          console.log(`✅ [Tashqariga Bot] @${botInfo.username} faol va xabarlarni qabul qilmoqda!`);
+        }
+      });
     } catch (err) {
       console.error('Telegram botni ishga tushirishda xatolik:', err.message);
     }
