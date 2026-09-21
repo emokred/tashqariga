@@ -133,7 +133,7 @@ export default function BookingModal() {
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
           <div>
             <h3 className="text-base sm:text-lg font-bold text-gray-900">
-              {confirmedBooking ? '🎉 Chiptangiz Tayyor!' : 'Sayohatga Joy Band Qilish'}
+              {confirmedBooking ? '🎉 SURAMIZ! Chiptangiz Tayyor!' : 'Sayohatga Joy Band Qilish'}
             </h3>
             <p className="text-xs text-gray-500 font-medium truncate max-w-[280px]">
               {selectedTour.title}
@@ -158,7 +158,7 @@ export default function BookingModal() {
 
               <div>
                 <span className="text-xs font-semibold text-emerald-600 uppercase tracking-widest">
-                  Muvaffaqiyatli band qilindi
+                  🔥 SURAMIZ! Joyingiz muvaffaqiyatli band qilindi
                 </span>
                 <h2 className="text-xl font-black text-gray-900 mt-0.5">
                   Elektron Chipta #{confirmedBooking.ticketNumber}
@@ -217,7 +217,12 @@ export default function BookingModal() {
                 )}
               </div>
 
-                {/* Action Buttons */}
+              {/* Signature Outro */}
+              <p className="text-xs text-gray-500 font-medium italic pt-1">
+                «Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!»
+              </p>
+
+              {/* Action Buttons */}
                 <div className="space-y-2 pt-2">
                   <a
                     href={selectedTour.tgGroupLink || 'https://t.me/tashqarigauz'}

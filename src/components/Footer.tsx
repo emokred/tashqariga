@@ -19,8 +19,11 @@ export default function Footer() {
               </div>
               <span className="font-black text-xl tracking-tight">TASHQARIGA</span>
             </div>
-            <p className="text-xs sm:text-sm text-gray-400 max-w-md leading-relaxed">
-              O‘zbekistonning eng go‘zal tog‘lari, sharsharalari va kanyonlariga qulay sayohatlarni birlashtiruvchi birinchi raqamli agregator. Dam olish kunlaringizni unutilmas qiling!
+            <p className="text-xs sm:text-sm text-gray-300 font-medium">
+              Shahardan qoching. Tashqariga chiqing!
+            </p>
+            <p className="text-xs text-gray-400 max-w-md leading-relaxed">
+              «Tashqariga» — to‘rtta devor, cheksiz tirbandlik va ofis monitorlariga qarshi yoshlar harakati. Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!
             </p>
             <div className="flex items-center gap-3 pt-1">
               <a
@@ -122,7 +125,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-pine-900/80 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-3">
-          <p>© 2026 Tashqariga. Barcha huquqlar himoyalangan.</p>
+          <p>© 2026 «Tashqariga». Shahardan qoching. Tashqariga chiqing!</p>
           <p className="flex items-center gap-1">
             <span>O‘zbekistonda muhabbat bilan yaratildi</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />

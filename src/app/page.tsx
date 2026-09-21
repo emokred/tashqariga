@@ -122,20 +122,20 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* Why Tashqariga / Trust Section */}
+      {/* Why Tashqariga / Manifesto Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="bg-gradient-to-br from-pine-900 to-pine-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-pine-800 relative overflow-hidden">
           <div className="relative z-10 max-w-3xl">
             <div className="inline-flex items-center gap-1.5 bg-adventure-500/20 text-adventure-400 border border-adventure-500/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Nega aynan Tashqariga?</span>
+              <span>🌿 HARAKATIMIZ FALSAFASI</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-snug">
-              Tog‘ sayohatini bron qilish <br className="hidden sm:inline" />
-              hech qachon bunchalik oson bo‘lmagan.
+              Hayot to‘rtta devor orasida <br className="hidden sm:inline" />
+              o‘tib ketmasin.
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-300">
-              Endi o‘nlab Telegram kanallarni titkilab, gidlarga alohida yozib o‘tirmaysiz. Eng sara marshrutlar bir platformada.
+            <p className="mt-3 text-sm sm:text-base text-gray-300 leading-relaxed">
+              «Tashqariga» shunchaki sayohat servisi emas. Bu to‘rtta devor, cheksiz tirbandlik va ofis monitorlariga qarshi yoshlar harakati. Tog‘ cho‘qqilari, toza havo va haqiqiy sarguzashtlar bizni kutmoqda!
             </p>
           </div>
 
@@ -144,9 +144,9 @@ export default function HomePage() {
               <div className="w-10 h-10 rounded-xl bg-adventure-500 text-white flex items-center justify-center">
                 <Shield className="w-5 h-5" />
               </div>
-              <h4 className="font-bold text-base">Tekshirilgan Gidlar</h4>
+              <h4 className="font-bold text-base">Ishonchli Yo‘lboshchilar</h4>
               <p className="text-xs text-gray-300 leading-relaxed">
-                Platformadagi har bir jamoa va marshrut xavfsizlik va servis mezonlari bo‘yicha sinchiklab tekshiriladi.
+                Har bir marshrut va tajribali gidlar xavfsizlik va professionallik mezonlari asosida sinchkovlik bilan tekshiriladi.
               </p>
             </div>
 
@@ -154,9 +154,9 @@ export default function HomePage() {
               <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center">
                 <Heart className="w-5 h-5" />
               </div>
-              <h4 className="font-bold text-base">Shaffof Narxlar & Keshbek</h4>
+              <h4 className="font-bold text-base">Toza Kislorod & Erkinlik</h4>
               <p className="text-xs text-gray-300 leading-relaxed">
-                Yashirin to‘lovlarsiz aniq narxlar va har bir sayohatdan 5% keyingi safarlar uchun keshbek ballari.
+                Shahar shovqini va ekranlardan uzoqlashib, O‘zbekistonning eng go‘zal tog‘ daralarida to‘yib nafas oling.
               </p>
             </div>
 
@@ -164,9 +164,9 @@ export default function HomePage() {
               <div className="w-10 h-10 rounded-xl bg-blue-500 text-white flex items-center justify-center">
                 <Users className="w-5 h-5" />
               </div>
-              <h4 className="font-bold text-base">Samimiy Hamjamiyat</h4>
+              <h4 className="font-bold text-base">15 ta Yangi Qadrdon Do‘st</h4>
               <p className="text-xs text-gray-300 leading-relaxed">
-                Bir o‘zingiz bo‘lsangiz ham xavotir olmang — yangi qadrdon do‘stlar va unutilmas sarguzashtlar davrasi kafolatlanadi.
+                Bir o‘zingiz bo‘lsangiz ham tortinmang — safarlarimizda samimiy, ochiqko‘ngil tengdoshlar davrasi sizni kutmoqda.
               </p>
             </div>
           </div>

@@ -33,7 +33,7 @@ export default function Navbar() {
                 </span>
               </div>
               <p className="text-[11px] text-gray-500 font-medium hidden sm:block">
-                Shahar qafasidan tabiat qo‘yniga!
+                Shahardan qoching. Tashqariga chiqing!
               </p>
             </div>
           </div>

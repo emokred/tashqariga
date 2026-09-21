@@ -4,9 +4,9 @@ import './globals.css';
 import { AppProvider } from '@/context/AppContext';
 
 export const metadata: Metadata = {
-  title: 'Tashqariga — O‘zbekiston Tog‘lari va Hiking Agregatori',
-  description: 'O‘zbekistondagi eng yaxshi tog‘ sayohatlari, hiking va kembing turlarini toping, taqqoslang va 1 daqiqada joy band qiling.',
-  keywords: ['hiking', 'tog', 'sayohat', 'chimyon', 'soqoq', 'urungach', 'tashqariga', 'turizm', 'uzbekistan'],
+  title: 'Tashqariga — Shahardan qoching. Tashqariga chiqing!',
+  description: '«Tashqariga» — to‘rtta devor, cheksiz tirbandlik va ofis monitorlariga qarshi yoshlar harakati. O‘zbekiston tog‘ sayohatlari va hiking agregatori.',
+  keywords: ['hiking', 'tog', 'sayohat', 'chimyon', 'soqoq', 'urungach', 'tashqariga', 'turizm', 'uzbekistan', 'suramiz'],
   icons: {
     icon: '/favicon.ico',
   },

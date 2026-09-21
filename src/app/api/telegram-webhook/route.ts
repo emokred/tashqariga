@@ -32,22 +32,29 @@ function getMainInlineKeyboard() {
     .url('🌐 Saytda Ko‘rish', WEBAPP_URL);
 }
 
+const TARGET_CHATS = ['-5268286846', '1812234273', '6377617416'];
+
 // 1. /start komandasi
 bot.command('start', async (ctx) => {
   const fromUser = ctx.from;
-  const name = fromUser ? escapeHtml(fromUser.first_name || 'Tog\' oshig\'i') : 'Tog\' oshig\'i';
+  const name = fromUser ? escapeHtml(fromUser.first_name || 'Do\'stim') : 'Do\'stim';
 
   const welcomeMessage = 
-`Salom, <b>${name}</b>! 🏔️🌲
+`Salom, <b>${name}</b>! 🏔️🌲 Bu hafta qayerga qochamiz? <b>SURAMIZMI?</b> 🥾🔥
 
-<b>Tashqariga</b> — O‘zbekistonning eng go‘zal cho‘qqilari, sirli sharsharalari va sokin nefrit ko‘llari bo‘ylab sarguzashtlar platformasiga xush kelibsiz! 🥾⛺
+<b>«Tashqariga»</b> — to‘rtta devor, cheksiz tirbandlik va ofis monitorlariga qarshi yoshlar harakati!
 
-Biz sizga eng ishonchli va tajribali tog‘ gidlarining sara turlarini bitta joyda taqdim etamiz:
-✨ <b>1 daqiqada</b> joy band qiling va elektron chipta oling
-🛡️ <b>100% Xavfsizlik</b> va rasmiy gidlar hamrohligi
-💬 Gidlar bilan to‘g‘ridan-to‘g‘ri aloqa va safar guruhlari
+<i>«Shahardan qoching. Tashqariga chiqing!»</i>
 
-Quyidagi <b>«🏔️ Tashqariga Mini App»</b> tugmasini bosib, sayohatlarni kashf eting:`;
+Biz bilan sarguzashtlar oson va samimiy:
+✨ <b>1 daqiqada</b> joy band qil va elektron chiptangni ol
+👥 Do‘stlaring kelolmasa xavotir olma — bitta o‘zing kel, qaytishda 15 ta yangi qadrdon do‘sting bo‘ladi!
+🛡️ <b>100% Xavfsizlik</b>, tajribali yo‘lboshchilar va tog‘ning toza kislorodi
+💬 Safar guruhi va gidlar bilan bevosita jonli muloqot
+
+Pastdagi <b>«🏔️ Tashqariga Mini App»</b> tugmasini bos va safarlarni kashf et!
+
+<i>Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!</i>`;
 
   try {
     await ctx.setChatMenuButton({

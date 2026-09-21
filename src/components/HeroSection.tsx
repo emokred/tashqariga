@@ -38,19 +38,19 @@ export default function HeroSection({
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-semibold text-adventure-400 mb-6 shadow-sm">
           <Flame className="w-3.5 h-3.5 text-adventure-500 fill-adventure-500 animate-pulse" />
-          <span>Dam olish kunlarini divanda o‘tkazmang!</span>
+          <span>🔥 SURAMIZMI? Bu dam olish kuni SURAMIZ!</span>
         </div>
 
         {/* Slogan */}
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight sm:leading-tight">
-          O‘zbekiston Tog‘lari va <br className="hidden sm:inline" />
+          Shahardan qoching. <br className="hidden sm:inline" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-adventure-400 via-amber-300 to-emerald-400">
-            Hiking Safarlari Bitta Joyda
+            Tashqariga chiqing!
           </span>
         </h1>
 
         <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto font-normal leading-relaxed">
-          Aviasales qulayligida eng sara gidlarning marshrutlarini taqqoslang, bo‘sh o‘rinlarni toping va 1 daqiqada joy band qiling.
+          «Tashqariga» — to‘rtta devor, cheksiz tirbandlik va ofis monitorlariga qarshi yoshlar harakati. Tog‘ marshrutlarini taqqoslang, bo‘sh o‘rinlarni toping va 1 daqiqada safarga qo‘shiling!
         </p>
 
         {/* Interactive Search Card */}
@@ -120,15 +120,15 @@ export default function HeroSection({
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-300">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>Tekshirilgan professional gidlar</span>
+            <span>Ishonchli yo‘lboshchilar & gidlar</span>
           </div>
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-adventure-400" />
-            <span>Do‘stona va samimiy jamoa</span>
+            <span>15 ta yangi qadrdon do‘st</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span>Tezkor QR-chipta va kafolatlangan joy</span>
+            <span>Musaffo tog‘ havosi & erkinlik</span>
           </div>
         </div>
       </div>

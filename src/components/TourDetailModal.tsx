@@ -270,7 +270,7 @@ export default function TourDetailModal() {
                 </a>
                 <button
                   onClick={() => {
-                    const shareText = `🏔️ Tashqariga orqali ajoyib tog‘ sayohati: ${selectedTour.title}!\n📅 Sana: ${selectedTour.displayDate}\n💰 Narxi: ${selectedTour.price.toLocaleString()} so‘m\nJoy band qilish:`;
+                    const shareText = `🏔️ «Tashqariga» orqali ajoyib tog‘ sayohati: ${selectedTour.title}!\n🔥 SURAMIZMI? Bu dam olish kuni tog‘ga suramiz!\n📅 Sana: ${selectedTour.displayDate}\n💰 Narxi: ${selectedTour.price.toLocaleString()} so‘m\nShahardan qoching. Tashqariga chiqing! Joy band qilish:`;
                     const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://tashqariga.vercel.app';
                     const tgUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
                     window.open(tgUrl, '_blank');
@@ -307,7 +307,7 @@ export default function TourDetailModal() {
                 : 'bg-adventure-500 hover:bg-adventure-600 text-white shadow-adventure-500/30'
             }`}
           >
-            <span>{isSoldOut ? 'Barcha joylar to‘lgan' : 'Joy band qilish'}</span>
+            <span>{isSoldOut ? 'Barcha joylar to‘lgan' : 'SURAMIZ! Joy band qilish'}</span>
             {!isSoldOut && <ChevronRight className="w-4 h-4" />}
           </button>
         </div>

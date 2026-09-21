@@ -21,39 +21,47 @@ export async function POST(request: Request) {
       // Local bot unreachable (e.g. running on Vercel cloud)
     }
 
-    // 2. Fallback: Send directly via Telegram Bot API
+    // 2. Telegram Bot API orqali guruh va asoschilarga xabar jo'natish
     const botToken = process.env.BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN || '8919209304:AAG2-e-kmAJc82pw7wcARnVKEFKDJWL3BUE';
-    const adminChatId = process.env.ADMIN_CHAT_ID;
+    const targetChats = ['-5268286846', '1812234273', '6377617416'];
+    if (process.env.ADMIN_CHAT_ID && !targetChats.includes(process.env.ADMIN_CHAT_ID)) {
+      targetChats.push(process.env.ADMIN_CHAT_ID);
+    }
 
-    if (!notified && botToken && adminChatId) {
-      try {
-        const text = 
-`🛎️ <b>YANGI BUYURTMA! (Vercel Cloud)</b> 🏔️\n
-🎫 <b>Chipta:</b> <code>#${bookingData.ticketNumber || 'TSH-NEW'}</code>
-🏔️ <b>Tur:</b> <b>${bookingData.tourTitle || 'Noma\'lum tur'}</b>
+    if (botToken) {
+      const text = 
+`🔥 <b>SURAMIZ! YANGI CHIPTA BAND QILINDI!</b> 🏔️
+━━━━━━━━━━━━━━━━━━━━
+🎫 <b>Chipta raqami:</b> <code>#${bookingData.ticketNumber || 'TSH-NEW'}</code>
+🏔️ <b>Safar:</b> <b>${bookingData.tourTitle || 'Noma\'lum tur'}</b>
 📍 <b>Manzil:</b> ${bookingData.tourDestination || 'Toshkent'}
-🗓️ <b>Sana:</b> ${bookingData.tourDate || ''} (${bookingData.departureTime || ''})
-🚌 <b>Uchrashuv:</b> ${bookingData.departureLocation || ''}
+🗓️ <b>Sana:</b> ${bookingData.tourDate || ''} (${bookingData.departureTime || '07:00'})
+🚌 <b>Uchrashuv:</b> ${bookingData.departureLocation || 'Metro bekati'}
 
-👤 <b>Mijoz:</b> ${bookingData.customerName || 'Noma\'lum'}
-📞 <b>Telefon:</b> ${bookingData.customerPhone || 'Kiritilmagan'}
-✈️ <b>Telegram:</b> ${bookingData.customerTelegram || 'Kiritilmagan'}
+👤 <b>Mijoz:</b> <b>${bookingData.customerName || 'Noma\'lum'}</b>
+📞 <b>Telefon:</b> <a href="tel:${bookingData.customerPhone}">${bookingData.customerPhone || 'Kiritilmagan'}</a>
+✈️ <b>Telegram:</b> ${bookingData.customerTelegram ? (bookingData.customerTelegram.startsWith('@') ? bookingData.customerTelegram : '@' + bookingData.customerTelegram) : '<i>Kiritilmagan</i>'}
 👥 <b>O'rinlar:</b> ${bookingData.seatsCount || 1} kishi
 💵 <b>Jami to'lov:</b> <b>${Number(bookingData.totalPrice || 0).toLocaleString('uz-UZ')} so'm</b>
-💳 <b>To'lov:</b> ${bookingData.paymentMethod || 'Click'}`;
+💳 <b>To'lov turi:</b> ${bookingData.paymentMethod || 'Click'}
+⚡ <b>Holati:</b> ✅ Tasdiqlangan va bron qilingan
+━━━━━━━━━━━━━━━━━━━━
+<i>«Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!»</i>`;
 
-        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: adminChatId,
-            text,
-            parse_mode: 'HTML',
-          }),
-        });
-      } catch (tgErr) {
-        console.warn('Telegram direct notify error:', tgErr);
-      }
+      // Parallel holda barcha chatlarga yetkazish
+      await Promise.allSettled(
+        targetChats.map((chatId) =>
+          fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text,
+              parse_mode: 'HTML',
+            }),
+          })
+        )
+      );
     }
 
     return NextResponse.json({ 

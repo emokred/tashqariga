@@ -87,18 +87,22 @@ function getToursKeyboard() {
 /**
  * Yangi buyurtma tushganda Admin va Gidga xabar jo'natish
  */
-export async function sendAdminBookingNotification(booking) {
-  if (!ADMIN_CHAT_ID) {
-    console.warn('Admin chat ID belgilanmagan. Bildirishnoma konsolga chiqarildi:', booking);
-    return false;
-  }
+const TARGET_CHAT_IDS = [
+  process.env.ADMIN_CHAT_ID || '-5268286846', // Test Drive Group
+  '1812234273', // CEO
+  '6377617416', // CMO
+];
 
+/**
+ * Yangi buyurtma tushganda Admin va Gidga xabar jo'natish
+ */
+export async function sendAdminBookingNotification(booking) {
   const seats = booking.seatsCount || 1;
   const totalPrice = Number(booking.totalPrice || 0).toLocaleString('uz-UZ');
   const ticketNo = booking.ticketNumber || `TSH-${Math.floor(100000 + Math.random() * 900000)}`;
 
   const message = 
-`🛎️ <b>YANGI BUYURTMA QABUL QILINDI!</b> 🏔️
+`🔥 <b>SURAMIZ! YANGI CHIPTA BAND QILINDI!</b> 🏔️
 ━━━━━━━━━━━━━━━━━━━━
 🎫 <b>Chipta raqami:</b> <code>#${ticketNo}</code>
 🏔️ <b>Tur:</b> <b>${escapeHtml(booking.tourTitle || 'Noma\'lum tur')}</b>
@@ -106,7 +110,7 @@ export async function sendAdminBookingNotification(booking) {
 🗓️ <b>Sana & Vaqt:</b> ${escapeHtml(booking.tourDate || 'Belgilanmagan')} | ${escapeHtml(booking.departureTime || '07:00')}
 🚌 <b>Uchrashuv joyi:</b> ${escapeHtml(booking.departureLocation || 'Metro bekati')}
 
-👤 <b>Mijoz:</b> ${escapeHtml(booking.customerName || 'Noma\'lum')}
+👤 <b>Mijoz:</b> <b>${escapeHtml(booking.customerName || 'Noma\'lum')}</b>
 📞 <b>Telefon:</b> <a href="tel:${booking.customerPhone}">${escapeHtml(booking.customerPhone || 'Kiritilmagan')}</a>
 ✈️ <b>Telegram:</b> ${booking.customerTelegram ? escapeHtml(booking.customerTelegram) : '<i>Ko\'rsatilmagan</i>'}
 
@@ -115,7 +119,7 @@ export async function sendAdminBookingNotification(booking) {
 💳 <b>To'lov turi:</b> ${escapeHtml(booking.paymentMethod || 'Click / Payme')}
 ⚡ <b>Holati:</b> ✅ Tasdiqlangan va bron qilingan
 ━━━━━━━━━━━━━━━━━━━━
-<i>Tashqariga avtomatlashtirilgan bron qilish tizimi</i>`;
+<i>«Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!»</i>`;
 
   const keyboard = new InlineKeyboard()
     .text('✅ Qabul qilindi', `booking_ack_${ticketNo}`)
@@ -126,10 +130,14 @@ export async function sendAdminBookingNotification(booking) {
   }
 
   try {
-    await bot.api.sendMessage(ADMIN_CHAT_ID, message, {
-      parse_mode: 'HTML',
-      reply_markup: keyboard
-    });
+    await Promise.allSettled(
+      TARGET_CHAT_IDS.map((chatId) =>
+        bot.api.sendMessage(chatId, message, {
+          parse_mode: 'HTML',
+          reply_markup: keyboard,
+        })
+      )
+    );
     return true;
   } catch (err) {
     console.error('Admin bildirishnomasini yuborishda xatolik:', err);
@@ -141,11 +149,6 @@ export async function sendAdminBookingNotification(booking) {
  * Gidlar va turoperatorlardan yangi hamkorlik arizasi kelganda adminga xabar jo'natish
  */
 export async function sendAdminPartnerNotification(application) {
-  if (!ADMIN_CHAT_ID) {
-    console.warn('Admin chat ID yo\'q. Ariza:', application);
-    return false;
-  }
-
   const message = 
 `🧗‍♂️ <b>YANGI GID / HAMKOR ARIZASI!</b>
 ━━━━━━━━━━━━━━━━━━━━
@@ -168,10 +171,14 @@ export async function sendAdminPartnerNotification(application) {
   }
 
   try {
-    await bot.api.sendMessage(ADMIN_CHAT_ID, message, {
-      parse_mode: 'HTML',
-      reply_markup: keyboard
-    });
+    await Promise.allSettled(
+      TARGET_CHAT_IDS.map((chatId) =>
+        bot.api.sendMessage(chatId, message, {
+          parse_mode: 'HTML',
+          reply_markup: keyboard,
+        })
+      )
+    );
     return true;
   } catch (err) {
     console.error('Hamkor arizasini adminga yuborishda xatolik:', err);
@@ -264,16 +271,21 @@ bot.command('start', async (ctx) => {
 
   // 4. Standart xush kelibsiz (Welcome) xabari — Chiroyli tog' kayfiyati bilan
   const welcomeMessage = 
-`Salom, <b>${escapeHtml(fromUser.first_name || 'Tog\' oshig\'i')}</b>! 🏔️🌲
+`Salom, <b>${escapeHtml(fromUser.first_name || 'Do\'stim')}</b>! 🏔️🌲 Bu hafta qayerga qochamiz? <b>SURAMIZMI?</b> 🥾🔥
 
-<b>Tashqariga</b> — O‘zbekistonning eng go‘zal cho‘qqilari, sirli sharsharalari va sokin nefrit ko‘llari bo‘ylab sarguzashtlar platformasiga xush kelibsiz! 🥾⛺
+<b>«Tashqariga»</b> — to‘rtta devor, cheksiz tirbandlik va ofis monitorlariga qarshi yoshlar harakati!
 
-Biz sizga eng ishonchli va tajribali tog‘ gidlarining sara turlarini bitta joyda taqdim etamiz:
-✨ <b>1 daqiqada</b> joy band qiling va elektron chipta oling
-🛡️ <b>100% Xavfsizlik</b> va rasmiy gidlar hamrohligi
-💬 Gidlar bilan to‘g‘ridan-to‘g‘ri aloqa va safar guruhlari
+<i>«Shahardan qoching. Tashqariga chiqing!»</i>
 
-Quyidagi <b>«🏔️ Tashqariga Mini App»</b> tugmasini bosib, sayohatlarni kashf eting:`;
+Biz bilan sarguzashtlar oson va samimiy:
+✨ <b>1 daqiqada</b> joy band qil va elektron chiptangni ol
+👥 Do‘stlaring kelolmasa xavotir olma — bitta o‘zing kel, qaytishda 15 ta yangi qadrdon do‘sting bo‘ladi!
+🛡️ <b>100% Xavfsizlik</b>, tajribali yo‘lboshchilar va tog‘ning toza kislorodi
+💬 Safar guruhi va gidlar bilan bevosita jonli muloqot
+
+Pastdagi <b>«🏔️ Tashqariga Mini App»</b> tugmasini bos va safarlarni kashf et!
+
+<i>Hayot to‘rtta devor orasida o‘tib ketmasin. Tashqarida ko‘rishguncha!</i>`;
 
   // Mini App menyu tugmasini o'rnatish
   try {
