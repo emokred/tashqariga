@@ -13,6 +13,15 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* iOS & Android Safe Area Insets */
+.safe-area-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+.safe-area-top {
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+}
+
 /* Custom scrollbars */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

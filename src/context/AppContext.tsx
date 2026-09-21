@@ -105,6 +105,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         tg.expand?.();
         tg.enableClosingConfirmation?.();
         try {
+          // Prevent accidental pull-down-to-close on mobile scroll
+          (tg as unknown as { disableVerticalSwipes?: () => void }).disableVerticalSwipes?.();
+        } catch {
+          // ignore if not supported in older TG clients
+        }
+        try {
           tg.setHeaderColor?.('#183B2B');
           tg.setBackgroundColor?.('#F7F9F6');
         } catch {
